@@ -1,15 +1,15 @@
 body{
-    background-color: brown;
+    background-color: rgb(203, 179, 179);
     font-family: verdana; 
 }
 h1{
-    color: beige;
-    text-align: center;
+    color: rgb(135, 135, 46);
+    text-align: left;
     border: 2px  dotted;
 
 }
 p{
-    color: tomato;
-    text-align: center;
-    border: 2px black dashed;
+    color: rgb(72, 33, 27);
+    text-align: left;
+    border: 2px rgb(150, 125, 125) dashed;
 }
