@@ -1,11 +1,15 @@
 body{
     background-color: brown;
-    
+    font-family: verdana; 
 }
 h1{
     color: beige;
     text-align: center;
+    border: 2px  dotted;
+
 }
 p{
     color: tomato;
+    text-align: center;
+    border: 2px black dashed;
 }
