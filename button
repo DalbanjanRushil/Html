@@ -1,0 +1,12 @@
+<!doctype html>
+<htm lang="en">
+    <head>
+        <title>BUTTONS</title>
+    </head>
+    <body>
+        <button > clcik me </button>
+        <button class="red"> delet</button>
+        <button disabled> disabled </button >
+
+    </body>
+</html>
