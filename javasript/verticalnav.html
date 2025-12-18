@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>vertical navbar</head>
+    <head></head>
     <style>
         ul{
-            background-color: gray;
+            background-color: rgb(212, 205, 205);
             list-style-type: none;
             width: 200px;
             margin: 0;
             padding: 0;
+            height: 98vh;
         }
         li a{
             display: block;
@@ -19,14 +20,18 @@
             color:blue;
             background-color: azure;
         }
+        .active{
+            color:aqua;
+            background-color: yellow;
+        }
        
     </style>
     <body>
         <ul>
-           <li > <a href="/girl.png">Home</a></li>
-            <li > <a href="/girl.png">about</a></li>
-            <li > <a href="/girl.png">contact</a></li>
-            <li > <a href="/girl.png">info</a></li>
+           <li > <a class="active" href="/girl.png" >Home</a></li>
+            <li > <a href="/girl.png">About</a></li>
+            <li > <a href="/girl.png">Contact</a></li>
+            <li > <a href="/girl.png">Info</a></li>
             
         </ul>
     </body>
