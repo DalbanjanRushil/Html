@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Horizontal bar</title>
-    </head>
+    <head></head>
+    <style>
+       ul{
+list-style-type: none;
+background-color: bisque;
+overflow: hidden;
+
+       }
+       ul li{
+        float: left;
+       }
+       ul li a{
+display: block;
+color: black;
+padding: 8px 16px ;
+text-decoration: none;
+       }
+       ul li a:hover{
+        background-color:aquamarine;
+       }
+    </style>
     <body>
         <ul>
+           <li > <a class="active" href="/girl.png" >Home</a></li>
+            <li > <a href="/girl.png">About</a></li>
+            <li > <a href="/girl.png">Contact</a></li>
+            <li > <a href="/girl.png">Info</a></li>
             
         </ul>
     </body>
