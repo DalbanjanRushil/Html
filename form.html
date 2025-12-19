@@ -1,4 +1,4 @@
-<!--
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -6,29 +6,78 @@
             Form 
         </title>
         <style>
+            body{
+                background-color: blanchedalmond;
+                align-content: center;
+            }
+
+form{
+    border-radius: 10px;
+    background-color: bisque;
+    
+    padding:20px;
+   
+}
+
+
+
+
+input[type= text],[type=email], [type=date],  [type=textarea]{
+    width: 30%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+    
+}
+input[type=radio]{
+     margin: 8px 0;
+     padding: 12px;
+      display: inline-block;
+      width: 2%;
+}
+
+input[type=submit]{
+    background-color: rgb(140, 230, 140);
+    width:100%;
+   box-sizing: border-box;
+    
+  border-radius: 10px;
+  width: 30%;
+  padding: 12px;
+  margin: 8px 0;
+}
+
+input[type=submit]:hover{
+    background-color: aquamarine;
+}
 
         </style>
     </head>
     <body>
+        
+        <h2> User Registration </h2>
         <form>
-        <h2> Register</h2>
-        <p>Enter your first name <p>
-        <input type="text" id="t1" placeholder="please enter your first name ">
-        <p>Enter your last name <p>
-        <input type="text" id="t2" placeholder="please enter your Last name ">
-        <p>Enter your email <p>
-        <input type="email" placeholder="your@gmail.com" id="e1">
-        <p>Enter your DOB  <p>
-        <input type="date" id="d1">
-        <p>gender<p>
-            <div>
-        <input type="radio" id="r1" > male <input type="radio" id="r2">female
+        <label> Enter your first name </label><br>
+        <input type="text" id="t1" placeholder="please enter your first name "><br>
+        <label>Enter your last name </label><br>
+        <input type="text" id="t2" placeholder="please enter your Last name "><br>
+        <label>Enter your email </label><br>
+        <input type="email" placeholder="your@gmail.com" id="e1"><br>
+        <label>Enter your DOB  <label><br>
+        <input type="date" id="d1"><br>
         <div>
-        <p>enter your address<p>
-        <input type="text" maxlength="256"><br>
+        
+        </label>Select Gender</label><br>
+            
+        <input type="radio" id="r1"  > male <input type="radio" id="r2" >female<br>
+        </div>
+        <label>Enter your address</label><br>
+        <input type="textarea" maxlength="256" placeholder="Enter your address"><br>
 
         <input type="submit">
         </form>
     </body>
 </html>
--->
