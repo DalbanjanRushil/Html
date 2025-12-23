@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Flexbox</title>
+    
+    <style>
+    
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        font-size: larger;
+      }
+      .head {
+        display: flex;
+        flex-grow: 1;
+        background-color: rgb(161, 250, 250);
+        justify-content: center;
+        align-items: center;
+      }
+      .f {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 2;
+      }
+    
+      .feature {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .signup {
+        display: flex;
+        flex-grow: 1;
+        background-color: rgb(157, 181, 173);
+        justify-content: space-around;
+        align-items: center;
+      }
+      .content {
+        display: flex;
+        flex-grow: 3;
+        background-color: rgb(112, 149, 137);
+        justify-content: space-around;
+        align-items: center;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="head">Header</div>
+    <div class="f">
+      <div class="feature" style=" background-color: rgb(244, 207, 98);">Feature 1</div>
+      <div class="feature" style=" background-color: rgb(145, 136, 110);">Feature 2</div>
+      <div class="feature" style=" background-color: rgb(244, 207, 98);">Feature 3</div>
+    </div>
+    <div class="signup">Signup</div>
+    <div class="content">content</div>
+  </body>
+</html>
