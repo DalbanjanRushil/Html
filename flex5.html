@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>Flexbox</title>
-
+<meta name="viewport" content="device-width, initial-scale=1.0" />
     <style>
       body {
         display: flex;
@@ -121,6 +121,12 @@
         flex-grow: 1;
         margin: 5px;
       }
+       @media (max-width: 600px) {
+        .top, .main,
+        .footer {
+          flex-direction: column;
+        }
+      } 
     
     </style>
   </head>
