@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Flexbox</title>
+    <meta name="viewport" content="device-width, initial-scale=1.0" />
+    <style>
+      body {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        min-height: 100vh;
+        font-size: larger;
+        background-color: rgb(255, 255, 255);
+        margin: 0px;
+      }
+      .top,
+      .bottom {
+        display: flex;
+        flex-direction: row;
+        flex: 0.1;
+      }
+      .top .header,
+      .footer {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 3;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(139, 143, 143);
+      }
+      .top .header1,
+      .footer1 {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(70, 81, 81);
+      }
+      .top .header2,
+      .footer2 {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(40, 50, 50);
+      }
+
+      .section {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        flex-grow: 1;
+      }
+      .section .sidebar {
+        display: flex;
+        flex-direction: column;
+      }
+      .sidebar {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+        background-color: rgb(224, 140, 140);
+        justify-content: center;
+        align-items: center;
+      }
+      .side {
+        display: flex;
+        flex-direction: column;
+        flex: 2;
+      }
+      .side .main {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1.2;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* @media (min-width: 800px) {
+        .top,
+        .bottom {
+            background-color: aqua;
+          flex-direction: column;
+          
+        }
+      } */
+
+       @media (max-width: 600px) {
+        .top, .section,
+        .bottom {
+          flex-direction: column;
+        }
+      } 
+    </style>
+  </head>
+  <body>
+    <div class="top">
+      <div class="header">HEADER</div>
+      <div class="header1">HEADER 1</div>
+      <div class="header2">HEADER 2</div>
+    </div>
+    <div class="section">
+      <div class="sidebar">Left_Space</div>
+      <div class="side">
+        <div class="main" style="background-color: rgb(198, 148, 88)">
+          MAIN 1
+        </div>
+        <div class="main" style="background-color: rgb(200, 188, 171)">
+          MAIN 2
+        </div>
+        <div class="main" style="background-color: rgb(230, 177, 113)">
+          MAIN 3
+        </div>
+      </div>
+      <div class="sidebar">Right_Space</div>
+    </div>
+    <div class="bottom">
+      <div class="footer" style="display: flex; flex-grow: 10">FOOTER</div>
+      <div class="footer1" style="display: flex; flex-grow: 1">FOOTER 1</div>
+      <div class="footer2" style="display: flex; flex-grow: 1">FOOTER 2</div>
+    </div>
+  </body>
+</html>

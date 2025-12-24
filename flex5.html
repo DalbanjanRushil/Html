@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Flexbox</title>
+
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        font-size: larger;
+        background-color: rgb(255, 255, 255);
+        margin: 0px;
+      }
+       .top {
+        display: flex;
+        flex-direction: row;
+        flex: 0.1;
+      }
+       .top .header {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 3;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(139, 143, 143);
+      }
+       .top .header1 {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(70, 81, 81);
+      }
+       .top .header2 {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(40, 50, 50);
+      }
+      .main {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        flex-grow: 1;
+       
+      }
+      .main .sidebar {
+        display: flex;
+        flex-direction: column;
+      }
+      .sidebar {
+        display: flex;
+        flex-direction: row;
+        flex: 2;
+        background-color: rgb(224, 140, 140);
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+      }
+      .section {
+        display: flex;
+        flex-direction: column;
+        flex: 8;
+      }
+      .section .cont {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: aqua;
+        flex-grow: 1;
+        margin: 5px;
+      }
+      .section .content{
+        display: flex;
+        flex-direction: row;
+        flex-grow: 3;
+      /*  justify-content: space-around;
+        align-items: center;
+        background-color: beige;
+        margin: 5px;
+        */
+      }
+      .content .co1{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        background-color: aqua;
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+      }
+      .content .co2{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        background-color: aqua;
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+      }
+      .content .co3{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        background-color: aqua;
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+      }
+      .section .footer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: aqua;
+        flex-grow: 1;
+        margin: 5px;
+      }
+    
+    </style>
+  </head>
+  <body>
+    <div class="top">
+      <div class="header">HEADER</div>
+      <div class="header1">HEADER 1</div>
+      <div class="header2">HEADER 2</div>
+    </div>
+    <div class="main">
+      <div class="sidebar">Sidebar</div>
+      <div class="section">
+        <div class="cont">Main</div>
+        <div class="content">
+          <div class="co1">content 1</div>
+          <div class="co2">content 2</div>
+          <div class="co3">conetent 3</div>
+          
+        </div>
+        <div class="footer">Footer</div>
+      </div>
+    </div>
+  </body>
+</html>
