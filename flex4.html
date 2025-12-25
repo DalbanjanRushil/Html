@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>Flexbox</title>
-
+    <meta name="viewport" content="device-width,initial-scale=1" />
     <style>
       body {
         display: flex;
@@ -14,7 +14,7 @@
       }
       .navbar {
         display: flex;
-        flex-direction: row;
+        
         flex: 0.1;
         background-color: antiquewhite;
         justify-content: center;
@@ -23,10 +23,9 @@
       }
       .main {
         display: flex;
-        flex-direction: row;
+       
         align-items: stretch;
         flex-grow: 1;
-       
       }
       .main .sidebar {
         display: flex;
@@ -52,20 +51,30 @@
         justify-content: center;
         align-items: center;
         background-color: aqua;
-        flex-grow: 1;
+        flex: 1;
         margin: 5px;
       }
-      .section .content{
+      .section .content {
         display: flex;
         flex-direction: row;
-        flex-grow: 3;
-      /*  justify-content: space-around;
+        flex: 3;
+
+        /*  justify-content: space-around;
         align-items: center;
         background-color: beige;
         margin: 5px;
         */
       }
-      .content .co1{
+      .content .co {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        background-color: aqua;
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+      }
+      /* .content .co2 {
         display: flex;
         flex-direction: column;
         flex-grow: 1;
@@ -74,7 +83,7 @@
         align-items: center;
         margin: 5px;
       }
-      .content .co2{
+      .content .co3 {
         display: flex;
         flex-direction: column;
         flex-grow: 1;
@@ -82,26 +91,33 @@
         justify-content: center;
         align-items: center;
         margin: 5px;
-      }
-      .content .co3{
+      } */
+      .section .footer {
         display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        background-color: aqua;
-        justify-content: center;
-        align-items: center;
-        margin: 5px;
-      }
-      .section .footer{
-        display: flex;
-        flex-direction: column;
+        
         justify-content: center;
         align-items: center;
         background-color: aqua;
-        flex-grow: 1;
+        flex: 1;
         margin: 5px;
       }
-    
+      @media (max-width: 468px) {
+        .navbar,
+        .main,
+        .sidebar,
+        .section,
+        .cont,
+        .footer, .content {
+          flex-direction: column !important;
+        }
+        .sidebar{
+          flex:1;
+        }
+        
+
+        
+        
+      }
     </style>
   </head>
   <body>
@@ -111,9 +127,9 @@
       <div class="section">
         <div class="cont">Main</div>
         <div class="content">
-          <div class="co1">content 1</div>
-          <div class="co2">content 2</div>
-          <div class="co3">conetent 3</div>
+          <div class="co">content 1</div>
+          <div class="co">content 2</div>
+          <div class="co">conetent 3</div>
         </div>
         <div class="footer">Footer</div>
       </div>
