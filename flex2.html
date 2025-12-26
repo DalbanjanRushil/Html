@@ -1,164 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Flexbox</title>
-    <meta name="viewport" content="device-width,initial-scale=1">
+    <title>Flexbox Layout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <style>
-    
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
       body {
         display: flex;
         flex-direction: column;
-        height: 100vh;
+        min-height: 100vh;
         font-size: larger;
       }
+
+     
+      .head,
+      .content,
+      .signup {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
       .head {
-        display: flex;
-        flex-grow: 1;
-        background-color: rgb(161, 250, 250);
-        justify-content: center;
-        align-items: center;
-         @media (min-width: 600px) and (max-width: 900px) {
-          order:1;
-        }
+        flex: 1;
+        background: rgb(161, 250, 250);
       }
-      .f {
-        display: flex;
-        
-        flex-grow: 2;
-         @media (min-width: 600px) and (max-width: 900px) {
-          order:3;
-          
-         
-         
-        }
-      }
-    
-      .feature {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        justify-content: center;
-        align-items: center;
-      }
-      .feature1 {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        justify-content: center;
-        align-items: center;
-      }
-      .feature2 {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        justify-content: center;
-        align-items: center;
+
+      .content {
+        flex: 3;
+        background: rgb(112, 149, 137);
       }
 
       .signup {
-        display: flex;
-        flex-grow: 1;
-        background-color: rgb(157, 181, 173);
-        justify-content: space-around;
-        align-items: center;
+        flex: 1;
+        background: rgb(157, 181, 173);
+      }
 
-        @media (min-width: 600px) and (max-width: 900px) {
+
+      .f {
+        display: flex;
+        flex: 2;
+      }
+
+      .signup1,
+      .feature,
+      .feature1,
+      .feature2 {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .feature {
+        background: rgb(244, 207, 98);
+      }
+
+      .feature1 {
+        background: rgb(145, 136, 110);
+      }
+
+      .feature2 {
+        background: rgb(101, 84, 33);
+      }
+
+      
+      @media (max-width: 599px) {
+        body {
+          flex-direction: column;
+        }
+
+        .f {
+          flex-direction: column;
+        }
+
+        .signup1 {
           display: none;
         }
+
+        .head { order: 1; }
+        .content { order: 2; }
+        .signup { order: 3; }
+        .f { order: 4; }
+        .f .feature{order: 1;}
+        .f .feature1{order: 3;}
+        .f .feature2{order: 2;}
       }
-      .content {
-        display: flex;
-        flex-grow: 3;
-        background-color: rgb(112, 149, 137);
-        justify-content: space-around;
-        align-items: center;
-         @media (min-width: 600px) and (max-width: 900px) {
-          order:2;
-        }
-      }
+
       
-      .signup1{
-         display: flex;
-        flex-grow: 1;
-        background-color: rgb(157, 181, 173);
-        justify-content: space-around;
-        align-items: center;
-      }
-      @media(max-width: 300px) {
-        .head, .f, .signup, .content{
+      @media (min-width: 600px) and (max-width: 900px) {
+        body {
           flex-direction: column;
-
         }
-       .h{
-        order: 1;
-       }
-       .f{
-        order: 4;
-       }
-       .f .feature1{
-        order: 3;
-        
-       }
-       .content{
-        order: 2;
-        
-       }
-       .signup{
-        order: 3;
-       }
-       .signup1{
-        display: none !important;
-       }
-       
-        
-      }
 
-      @media(min-width:600px )and(max-width: 900px){
-        .head , .content, .f {
+        .signup {
+          display: none;
+        }
+
+        .signup1 {
           display: flex;
-          flex-direction: column !important;
+          background: rgb(157, 181, 173);
         }
-        .f{
-          display: flex;
-          
-        }
-        .signup{
-          display: none !important;
-        }
-        .head{
-          order: 1;
-        }
-        
-        
-      }
 
-
-      @media(max-width: 600px){
-        .signup1{
-          display: none !important;
+        .f {
+          flex-wrap: wrap;
         }
+
+        .signup1,
+        .feature,
+        .feature1,
+        .feature2 {
+          flex: 1 1 50%;
+        }
+
+        .head { order: 1; }
+        .content { order: 2; }
+        .f { order: 3; }
       }
 
       
-        
+      @media (min-width: 901px) {
+        body {
+          flex-direction: column;
+        }
 
-     
+        .signup1 {
+          display: none;
+        }
 
+        .f {
+          flex-direction: row;
+        }
 
-    
+        .head { order: 1; }
+        .f { order: 2; }
+        .signup { order: 3; }
+        .content { order: 4; }
+      }
     </style>
   </head>
+
   <body>
-     <div class="head" >Header</div>
-    <div class="f"  >
-      <div class="signup1">Signup</div>
-      <div class="feature" style=" background-color: rgb(244, 207, 98);" >Feature 1</div>
-      <div class="feature1" style=" background-color: rgb(145, 136, 110) ;">Feature 2</div>
-      <div class="feature2" style=" background-color: rgb(101, 84, 33) ;">Feature 3</div>
+    <div class="head">Header</div>
+
+    <div class="content">Content</div>
+
+    <div class="f">
+      <div class="signup1">Sign Up</div>
+      <div class="feature">Feature 1</div>
+      <div class="feature1">Feature 2</div>
+      <div class="feature2">Feature 3</div>
     </div>
-    <div class="signup">Signup</div>
-    <div class="content">content</div> 
-   
-    </div>
+
+    <div class="signup">Sign Up</div>
   </body>
 </html>
