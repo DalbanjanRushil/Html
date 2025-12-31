@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DR Architects</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        margin: 0px;
+
+        box-sizing: border-box;
+      }
+      .whole {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        background-color: antiquewhite;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(135, 218, 218);
+      }
+
+      .head {
+        display: flex;
+
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex: 4;
+        margin: 20px;
+      }
+
+      .links {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-around;
+        flex: 1;
+      }
+
+      .home,
+      .map {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .home {
+        position: relative;
+        text-align: center;
+      }
+
+      .center {
+        display: flex;
+
+        position: absolute;
+        top: 45%;
+        left: 45%;
+        transform: (-50%, -50%);
+      }
+
+      /* img{
+                
+                height: 90vh;
+            } */
+      /* Projects image */
+
+      .icontainer {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* about container of image  */
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .container1{
+        display: flex;
+        
+        align-items: center;
+        justify-content: space-between;
+      }
+      .container img {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        display: block;
+      }
+      .r1,
+      .r2,
+      .r3,
+      .r4,
+      .r5,
+      .r6,
+      .r7,
+      .r8 {
+        display: flex;
+        flex: 1 1 25%;
+        margin: 10px;
+        box-sizing: border-box;
+      }
+
+      .a1,
+      .a2,
+      .a3,
+      .a4 {
+            width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+
+      }
+
+      input[type="button"] {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        background-color: rgb(202, 200, 200);
+        color: rgb(0, 0, 0);
+      }
+
+      /* Contact form  */
+      .form {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .fname {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      input[type="text"],
+      input[type="email"] {
+        display: flex;
+        padding: 5px;
+        margin: 5px;
+      }
+
+      input[type="submit"] {
+        flex-direction: column;
+        padding: 5px;
+        margin: 5px;
+
+        background-color: rgb(0, 0, 0);
+        color: azure;
+      }
+
+      .footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+        color: azure;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="whole">
+      <nav>
+        <div
+          class="head"
+          style="
+            font-size: larger;
+            color: rgb(0, 0, 0);
+            font-family: 'Times New Roman', Times, serif;
+          "
+        >
+          DR Architect
+        </div>
+        <div class="links">
+          <div><a href="#project">Projects</a></div>
+          <div><a href="#about">About</a></div>
+          <div><a href="#contact">Contact</a></div>
+        </div>
+      </nav>
+      <div class="home">
+        <!-- <div class="logo" style="font-size: larger;"><div style="background-color: bisque;">DR</div>Architects</div> -->
+
+        <img src="/image copy.png" style="height: 90vh" />
+        <div
+          class="center"
+          style="
+            font-size: xx-large;
+            color: rgb(255, 255, 255);
+            font-family: 'Times New Roman', Times, serif;
+          "
+        >
+          <div
+            style="
+              background-color: rgb(135, 218, 218);
+              padding: 2px;
+              color: black;
+            "
+          >
+            <b>DR</b>
+          </div>
+          Architect
+        </div>
+      </div>
+      <div class="project" id="project">
+        <p style="font-size: larger"><strong>Projects</strong></p>
+        <hr />
+
+        <!-- Row 1 -->
+        <div class="container">
+          <div class="r1">
+            <img src="/imrow12.png" />
+          </div>
+          <div class="r2">
+            <img src="/imrow13.png" />
+          </div>
+          <div class="r3">
+            <img src="/imrow14.png" />
+          </div>
+          <div class="r4">
+            <img src="/imrow11.png" />
+          </div>
+        </div>
+        <div class="container">
+          <div class="r5">
+            <img src="/imrow12.png" />
+          </div>
+          <div class="r6">
+            <img src="/imrow13.png" />
+          </div>
+          <div class="r7">
+            <img src="/imrow14.png" />
+          </div>
+          <div class="r8">
+            <img src="/imrow11.png" />
+          </div>
+        </div>
+      </div>
+
+      <div class="about" id="about">
+        <p style="font-size: larger"><strong>About</strong></p>
+        <hr />
+        <p>
+          Paragraphs are the building blocks of papers. Many students define
+          paragraphs in terms of length: a paragraph is a group of at least five
+          sentences, a paragraph is half a page long, etc. In reality, though,
+          the unity and coherence of ideas among sentences is what constitutes a
+          paragraph. A paragraph is defined as “a group of sentences or a single
+          sentence that forms a unit” (Lunsford and Connors 116). Length and
+          appearance do not determine whether a section in a paper is a
+          paragraph. For instance, in some styles of writing, particularly
+          journalistic styles, a paragraph can be just one sentence long.
+          Ultimately, a paragraph is a sentence or group of sentences that
+          support one main idea. In this handout, we will refer to this as the
+          “controlling idea,” because it controls what happens in the rest of
+          the paragraph.
+        </p>
+        <div class="container1">
+             <div class="a1">
+                <img src="/photo.png">
+                 <h3>Willy Doe</h3>
+                <p style="opacity: 0.4">CEO & Founder</p>
+                <p>
+                    Paragraphs are the building blocks of papers. Many students define
+                    paragraphs in terms of length:
+                </p>
+                <input type="button" value="Contact" />
+            </div>
+            <div class="a2">
+                <img src="/photo1.png">
+                 <h3>Jane Dai</h3>
+                <p style="opacity: 0.4">Architect</p>
+                <p>
+                    Paragraphs are the building blocks of papers. Many students define
+                    paragraphs in terms of length:
+                </p>
+                <input type="button" value="Contact" />
+            </div>
+            <div class="a3">
+                <img src="/4.png">
+                <h3>Morphy mark</h3>
+                <p style="opacity: 0.4">Architect</p>
+                <p>
+                    Paragraphs are the building blocks of papers. Many students define
+                    paragraphs in terms of length:
+                </p>
+                <input type="button" value="Contact" />
+            </div>
+            <div class="a4">
+                <img src="/5.png">
+                 <h3>Mark Star</h3>
+                <p style="opacity: 0.4">Architect</p>
+                <p>
+                    Paragraphs are the building blocks of papers. Many students define
+                    paragraphs in terms of length:
+                </p>
+                <input type="button" value="Contact" />
+
+            </div>
+        </div>
+      </div>
+
+      <div class="contact" id="contact">
+        <p style="font-size: larger; margin: 0px"><strong>Contact</strong></p>
+        <hr />
+        <p style="font-size: medium">
+          Lets get in touch and talk about your project
+        </p>
+        <form>
+          <div class="fname">
+            <input type="text" placeholder="Name" />
+          </div>
+          <div class="email">
+            <input type="email" placeholder="Email" />
+          </div>
+          <div class="subject">
+            <input type="text" placeholder="Subject" />
+          </div>
+          <div class="comment">
+            <input type="text" placeholder="Comment" />
+          </div>
+          <input id="s1" type="submit" value="SEND MESSAGE" />
+        </form>
+      </div>
+      <div class="map">
+        <img src="/map1.png" />
+      </div>
+      <div class="footer">
+        <p>Powered by DR Architects</p>
+      </div>
+    </div>
+  </body>
+</html>

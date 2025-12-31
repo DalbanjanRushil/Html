@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Registartion Form</title>
+    <style>
+      body {
+        display: flex;
+        
+        height: 100vh;
+        margin: 0px;
+       
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        
+        align-items: center;
+        }
+      h2{
+        display: flex;
+        margin: 0px;
+      }
+      
+      .form{
+        display: flex;
+        flex-direction: column;
+      }
+      .name{
+        display: flex;
+        justify-content: space-between;
+
+      }
+      .fname , .lname{
+        display: flex;
+        flex-direction: column;
+       }
+       input[type=text], input[type=email], input[type=tel] , input[type=date], input[type=radio]{
+        padding: 5px 16px;
+        }
+       
+
+       .contact{
+        display: flex;
+        justify-content: space-between;
+    }
+      .email , .phone{
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+       }
+       .dob{
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        
+       }
+       .gender{
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+       }
+       .subject{
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+       }
+       .message{
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+       }
+       input[type=file]{
+        display: none;
+       
+       }
+       .file1{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 1px dashed gray ;
+        padding: 10px;
+        
+       }
+      
+       input[type=submit]{
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        background-image: linear-gradient(to right, yellow , green);
+        padding: 5px 10px;
+        border-radius: 3px ;
+    }
+    .image{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+     
+       
+ </style>
+  </head>
+  <body>
+    
+    <div class="container">
+        
+      <h2>Complete Registeration Form</h2>
+      <p style="opacity: 0.4;">Fill in all the required Information below</p>
+      <div class="form">
+        <div class="name">
+          <div class="fname">
+           <label> First Name <span style="color: red;">*</span></label>
+            <input type="text" placeholder="Enter your First Name "  required/>
+          </div>
+          <div class="lname">
+           <label> Last Name <span style="color: red;">*</span></label> <input type="text" placeholder="Enter your Last Name" required />
+          </div>
+
+          
+        </div>
+        <div class="contact">
+                <div class="email">
+                <label> Email Address <span style="color: red;">*</span></label> <input type="email" placeholder="Enter your Email " required> 
+                </div>
+                <div class="phone">
+                 <label> Phone Number <span style="color: red;">*</span></label><input type="tel" placeholder="Enter your Phone number" required>
+                </div>
+      </div>
+      <div class="dob"><label> Date of Birth <span style="color: red;">*</span></label><input type="date" name="date" id="date" pattern="\y{4}-\m{2}-\d{2}"  placeholder="mm/dd/yyyy" /></div>
+      
+      <div class="gender">
+        <label> Gender <span style="color: red;">*</span></label>
+        <div>
+          <input type="radio" id="g1" name="gender" required />
+          <label for="g1">Male</label>
+          <input type="radio" id="g2" name="gender" />
+          <label for="g2">Female</label>
+          <input type="radio" id="g3" name="gender" />
+          <label for="g3">Other</label>
+        </div>
+      </div>
+      <div class="subject">
+        <label> Subject of Intrest <span style="color: red;">*</span></label> </div>
+        <select id="sub" style="padding:   5px 10px; background-color: rgb(178, 178, 172);" >
+          <option value="Select subject" selected >Choose a subject</option>
+          <option value="html" >HTML</option>
+          <option value="css">CSS</option>
+          <option value="js">JAVASCRIPT</option>
+        </select>
+     
+      <div class="message">
+        <label> Tell us about yourself  <span style="color: red;">*</span></label>
+        <textarea
+          maxlength="10000"
+          placeholder="Share your Background, Intrest , and why you're applying..."
+          rows="6"
+          cols="30"
+          required
+        ></textarea>
+        </div>
+        <label style="margin-top: 5px;" > Upload your CV / Resume  <span style="color: red;">*</span></label>
+        <div class="file1">
+        <input type="file" id="file" />
+        <label for="file">
+          <div class="image"> <img src="/image.png" style="align-items: center; width: 30px;" /></div><p style="opacity: 0.4;">Click to upload or drag and drop PDF , DOC ,(MAX 50MB)</p></label >
+      </div>
+        <input id="s1" type="submit" value="Submit" />
+      
+    </div>
+    </div>
+    
+  </body>
+</html>

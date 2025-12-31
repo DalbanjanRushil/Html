@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>User Registration</title>
+    <style></style>
+  </head>
+
+  <form action="/Html//formsubmit.html" style="margin: 20px;">
+    <h1>User Registration & Conatact Form</h1>
+    <p>
+      Please fill out the form below to register your account and contact us.
+      all fields as required must be completed
+    </p>
+    <p>Personal Details :</p>
+    <label id="name "> Full Name : </label><br />
+    <input type="text" placeholder="Enter your name" /><br /><br />
+    <label id="email"> Email Address: </label><br />
+    <input type="email" placeholder="Enter your email" /><br /><br />
+    <label id="pass">  Password : </label><br />
+    <input type="password" placeholder="Enter your password" /><br /><br />
+    <label id="cpass"> Confirm Password : </label><br />
+    <input type="password" placeholder="Re-Enter your password" /><br /><br />
+    <label id="Age" > Age : </label><br />
+    <input type="text" placeholder="Enter your Age" /><br /><br />
+    <label id="DOB"> Date of Birth : </label><br />
+    <input type="date" /><br /><br />
+    <label id="tel"> Phone : </label><br />
+    <input type="tel" placeholder="Enter your Phone Number" /><br /><br />
+
+    <p>Gender & Address</p>
+    <input type="radio" id="g1" name="gender" />
+    <label for="g1">Male</label><br />
+    <input type="radio" id="g2" name="gender" />
+    <label for="g2">Female</label><br />
+    <input type="radio" id="g3" name="gender" />
+    <label for="g3">Other</label><br /><br />
+    <label id="address"> Full Address</label><br />
+    <textarea
+      maxlength="1000"
+      placeholder="Enter Your Full Address"
+      rows="3"
+      cols="30"></textarea><br /><br />
+    <p>Location Details :</p>
+    <label > Country :</label><br />
+    <select id="Country">
+        <option value="Select Country">Select Country</option>
+      <option value="India">India</option>
+      <option value="London">London</option>
+      <option value="China">China</option></select><br />
+    <label >City :</label><br />
+    <select id="city">
+        <option value="Select City">Select City</option>
+      <option value="Nadiad">Nadiad</option>
+      <option value="Anand">Anand</option>
+      <option value="Ahmedbad">Ahmedbad</option></select
+    ><br />
+
+    <p>Prefrences: </p>
+    <label> Intrests :</label><br />
+
+    <input type="checkbox" /><label>Technology </label> <br />
+    <input type="checkbox" /><label>Sports </label> <br />
+    <input type="checkbox" /><label>Music </label> <br />
+    <input type="checkbox" /><label>Travel </label> <br /><br />
+
+    <p>Satisfaction Level (1 to 10)</p>
+    <input type="range" min="1" max="10" /><br /><br />
+
+    <label>Favorite Color :</label><br />
+    <input type="color" /><br /><br />
+
+    <label>Upload Profile Picture :</label><br />
+    <input type="file" /> <br /><br />
+
+    <label> Contact Information: </label><br /><br />
+    <label>Subject : </label><br />
+    <input type="text" placeholder="Enter Subject" /><br /><br />
+
+    <label>Message: </label><br />
+    <textarea
+      maxlength="1000"
+      placeholder="Write Your Message"
+      rows="3"
+      cols="30"
+    ></textarea
+    ><br />
+    <br />
+
+    <input type="checkbox" /> Send me copy of this Message<br /><br />
+
+    Confirmation:<br /><br />
+    <input type="checkbox" /> I agree to the Terms & Condition<br /><br />
+
+    <input id="r1" type="submit" value="Register"  />
+    <input id="c1" type="reset" value="Clear" />
+  </form>
+</html>
