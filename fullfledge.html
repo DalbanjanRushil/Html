@@ -1,16 +1,965 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>
-            Full Fledge
-        </title>
-        <style>
-            body{
-                display: flex;
-                flex-direction: column;
-                margin: 0px;
-                
-            }
-        </style>
-    </head>
+
+<head>
+    <title>Full Fledge</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            margin: 0px;
+
+            box-sizing: border-box;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            margin: 0px;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+
+            background-color: black;
+            color: azure;
+            margin: 0px none !important;
+        }
+
+        /* left Navbar */
+        .left {
+            display: flex;
+
+            align-items: center;
+            flex: 1;
+            align-items: flex-start;
+            justify-content: start;
+        }
+
+        /* hover effect */
+
+        /* classes of the navbar */
+        .logo,
+        .team,
+        .work1,
+        .price,
+        .search
+         {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            font-size: larger;
+            border: none;
+        }
+
+/*         
+         .dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: larger;  
+  border: none;
+  outline: none;
+  color: azure;
+  padding: 11px;
+  
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover,  .dropbtn {
+  background-color: red;
+}
+.dropdown:hover,  .dropbtn:hover{
+    background-color: rgb(255, 255, 255);
+    color: rgb(4, 4, 4);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+
+
+            .dropdown:hover .dropdown-content {
+                  display: block;
+            } */
+
+        .logo {
+            background-color: rgb(69, 131, 61);
+            margin: 0px;
+            color: black;
+        }
+
+        /* top image and map image */
+        .image1,
+        .map {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            position: relative;
+        }
+
+        /* tag which is present of scuba */
+        .tag1 {
+            display: flex;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            padding: 20px;
+            font: 800;
+
+            background-color: black;
+            color: azure;
+        }
+
+        /* Team */
+        .team {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Team meber image */
+        .member {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            object-fit: fill;
+        }
+
+        /* member image alignments  */
+        .m1,
+        .m2,
+        .m3,
+        .m4 {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            display: flex;
+            flex: 1 1 25%;
+            margin: 10px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /* Contact details  */
+        .contact {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(227, 233, 233);
+            padding: 10px;
+        }
+
+        .detail {
+            display: flex;
+            flex-direction: column;
+            flex: 2;
+            font-size: larger;
+
+        }
+
+        .form,
+        .style {
+            display: flex;
+            flex-direction: column;
+            flex: 3;
+            margin: 20px;
+            padding: 30px 1px;
+            background-color: rgb(254, 254, 254);
+            box-shadow: 2px black;
+        }
+
+        .style {
+            padding: 15px;
+        }
+
+        .bott {
+            display: flex;
+            font-size: large;
+        }
+
+        .checkbox {
+            display: flex;
+            flex: 2;
+            justify-content: flex-start;
+
+            align-items: center;
+        }
+
+        .send {
+            display: flex;
+            padding: 10px;
+        }
+
+        .mgb10 {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid rgb(136, 133, 133);
+
+            padding: 5px 10px 5px 10px;
+        }
+
+        /* input[type=text], input[type=email]{
+                margin: 2px;
+            } */
+        input[type="submit"] {
+            background-color: black;
+            color: white;
+
+            padding: 5px 10px 5px 10px;
+        }
+        
+
+        .address1 {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            justify-content: flex-start;
+        }
+
+        /* footer */
+        .footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            background-color: black;
+            color: aliceblue;
+            padding: 10%;
+        }
+
+        .logos {
+            display: flex;
+            flex-direction: row;
+            padding: 10px;
+            column-gap: 20px;
+        }
+
+        .f,
+        .s,
+        .t,
+        .in {
+            background-color: rgb(92, 147, 129);
+            padding: 10px;
+            color: black;
+        }
+
+        /* pricing css  */
+        .pricing {
+            display: flex;
+            padding: 5px;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(255, 255, 255);
+            flex: 1;
+            padding-bottom: 40px;
+        }
+
+        .basic {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            gap: 2px;
+            background-color: rgb(227, 233, 233);
+            border: 1px solid lightgray;
+        }
+
+        .b1,
+        .b2 {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+            font-size: xx-large;
+            background-color: black;
+            color: white;
+            width: 100%;
+            padding: 30px 0px 30px 0px;
+        }
+
+        .b2 {
+            background-color: black;
+            opacity: 0.6;
+            color: white;
+        }
+
+        .cont {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            width: 100%;
+            font-size: larger;
+        }
+
+        .c1 {
+            display: flex;
+            width: 100%;
+            padding: 20px 0px 20px 0;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid lightgrey;
+        }
+
+        .cont1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            width: 100%;
+        }
+
+        .c2 {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            padding: 20px 0px 20px 0;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid lightgrey;
+        }
+
+        .signup {
+            display: flex;
+            flex-direction: column;
+            padding: 25px 0px 25px 0px;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+        }
+
+        input[type="button"] {
+            background-color: rgb(66, 229, 66);
+            color: rgb(9, 9, 9);
+            padding: 10px 20px;
+            border: none;
+            font-size: larger;
+        }
+
+        input[type=button]:hover {
+            background-color: lightgray;
+        }
+
+        input[type=checkbox] {
+            font-size: larger;
+        }
+
+        .pricingtag {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        /* our work  */
+        .work {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            background-color: rgb(36, 37, 37);
+            flex: 3;
+            padding: 40px 0px;
+        }
+
+        .work .img {
+            width: 100%;
+            height: 280px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .w2,
+        .w3,
+        .w4 {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            align-items: flex-start;
+            justify-content: center;
+            margin: 10px;
+            gap: 2px;
+        }
+
+        .w1 {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            margin: 10px;
+            gap: 2px;
+            justify-content: left;
+            align-items: start;
+            color: white;
+            align-items: left;
+        }
+
+        .w2,
+        .w3,
+        .w4 {
+            background-color: white;
+        }
+
+        .imgw {
+            width: 100%;
+            height: 240px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .imtext {
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+            padding: 5px;
+
+        }
+
+        /* hover */
+        .logo:hover,
+        .team:hover,
+        .work1:hover,
+        .price:hover,
+        .dropdown:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .search:hover,
+        .tag1:hover {
+            background-color: rgb(69, 131, 61);
+            color: white;
+        }
+
+        /* Team */
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+
+        }
+
+        .container img {
+
+            width: 50%;
+            /* height: 280px; */
+            height: 230px;
+            object-fit: fill;
+            display: block;
+        }
+
+        .t1,
+        .t2,
+        .t3,
+        .t4 {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 25%;
+            margin: 10px;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            position: relative;
+
+        }
+
+
+
+        /* work */
+        .container1 {
+            display: flex;
+            flex: 3;
+
+            justify-content: space-between;
+
+
+        }
+
+        .container1 img {
+
+            width: 100%;
+            height: 280px;
+            object-fit: fill;
+            display: block;
+        }
+
+        .r1,
+        .r2,
+        .r3,
+        .r4,
+        .r5,
+        .r6,
+        .r7,
+        .r8 {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 25%;
+            margin: 10px;
+            box-sizing: border-box;
+            position: relative;
+            background-color: white;
+        }
+
+        .r9 {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 25%;
+            margin: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            color: white;
+        }
+
+        .teammem {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .teammembers {
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+        }
+
+        .t1 img:hover,
+        .t2 img:hover,
+        .t3 img:hover,
+        .t4:hover {
+            opacity: 0.6;
+        }
+
+        .basic:hover {
+            /* opacity: 0.6; */
+            /* box-shadow: rgba(58, 43, 43, 0.2) 5px 5px 5px 5px; */
+            /* box-shadow: rgba(0, 0, 0, 0.15)5px 5px 5px 5px; */
+            box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+        }
+
+        .form {
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+
+        .a1 {
+            display: flex;
+            font-size: xx-large;
+            font-weight: bolder;
+
+        }
+
+        .detail1 {
+            display: flex;
+            flex-direction: column;
+            font-size: large;
+        }
+
+        .dropbtn {
+            background-color: #000000;
+            color: azure;
+            padding: 11px;
+            font-size: 16px;
+            border: none;
+        }
+
+        .dropdown {
+             position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+             display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+             min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+             color: black;
+             padding: 12px 16px;
+             text-decoration: none;
+             display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #ffffff;
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <nav>
+            <div class="left">
+                <div class="logo">Logo</div>
+                <div class="team">Team</div>
+                <div class="work1">Work</div>
+                <div class="price">Price</div>
+                <div class="price">Contact</div>
+                <div class="dropdown">
+                    <button class="dropbtn">Dropdown</button>
+                    <div class="dropdown-content">
+                    <a href="#">Dropdown 1</a>
+                    <a href="#">Dropdown 2</a>
+                    <a href="#">Dropdown 3</a>
+                    </div>
+                </div>
+            </div>
+            <div class="Right">
+                <div class="search"><img src="/search1.png" height="20px"></div>
+            </div>
+        </nav>
+        <div class="image1">
+            <img src="/turtle.png" style="height: 80vh" />
+            <div class="tag1">LEARN SCUBA DIVING</div>
+        </div>
+        <!-- <div class="team">
+        <h3>Our Team</h3>
+        <p>Meet the Team dolphin who have 10+ years under water :</p>
+        <div class="member">
+          <div class="m1"><img src="/photo1.png" /></div>
+          <div class="m2"><img src="/photo3.png" /></div>
+          <div class="m3"><img src="/4.png" /></div>
+          <div class="m4"><img src="/5.png" /></div>
+        </div>
+      </div> -->
+        <!-- our work  -->
+        <div class="teammembers">
+            <div class="teammem"></div>
+            <h1>Our Team</h1>
+
+            <p>Meet the Team dolphin who have 10+ years under water :</p>
+        </div>
+        <div class="container">
+            <div class="t1">
+                <img src="/human.png" style="border-radius: 50%;">
+                <div class="teammem">
+                    <h2>Alie jade</h2>
+                    <p style="font-size: x-large;">Diver</p>
+                </div>
+
+
+            </div>
+            <div class="t2">
+                <img src="/human.png" style="border-radius: 50%;">
+                <div class="teammem">
+                    <h2>Melo tuff</h2>
+                    <p style="font-size: x-large;">Diver</p>
+                </div>
+            </div>
+            <div class="t3">
+                <img src="/human.png" style="border-radius: 50%;">
+                <div class="teammem">
+                    <h2>Will Jack</h2>
+                    <p style="font-size: x-large;">Diver</p>
+                </div>
+
+            </div>
+            <div class="t4">
+                <img src="/human.png" style="border-radius: 50%;">
+                <div class="teammem">
+                    <h2>Honey Tee</h2>
+                    <p style="font-size: x-large;">Video Grapher</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="work">
+        <!-- <div class="w1">
+          <h1>Our Work</h1>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </div> -->
+        <!-- <div class="w2">
+          <div class="imgw">
+            <img src="/mountain.png" height="240px" />
+          </div>
+          <div class="imtext">
+            <p style="font-size: x-large">Customer 1</p>
+            <p style="font-size: large">Trade</p>
+            <p style="font-size: small">Trade</p>
+            <p style="font-size: small">Trade</p>
+            <p style="font-size: small">Trade</p>
+          </div>
+        </div>
+        <div class="w3">
+          <div class="imgw">
+            <img src="/northernlights.png" height="240px" />
+          </div>
+          <div class="imtext">
+            <p style="font-size: x-large">Customer 1</p>
+            <p style="font-size: large">Trade</p>
+            <p style="font-size: small">Trade</p>
+            <p style="font-size: small">Trade</p>
+            <p style="font-size: small">Trade</p>
+          </div>
+        </div>
+        <div class="w4">
+          <div class="imgw">
+            <img src="/seaview.png" height="240px" />
+          </div>
+          <div class="imtext">
+            <p style="font-size: x-large">Customer 1</p>
+            <p style="font-size: large">Trade</p>
+            <p style="font-size: small">Trade</p>
+            <p style="font-size: small">Trade</p>
+            <p style="font-size: small">Trade</p>
+          </div>
+        </div> -->
+        <div class="container1">
+            <div class="r9">
+                <h1>Our Work</h1>
+                <p style="font-size: x-large;"> ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            </div>
+            <div class="r1">
+                <img src="/mountain.png">
+                <div class="imtext">
+                    <p style="font-size: x-large">Customer 1</p>
+                    <p style="font-size: large">Trade</p>
+                    <p style="font-size: small">Trade</p>
+                    <p style="font-size: small">Trade</p>
+                    <p style="font-size: small">Trade</p>
+                </div>
+                <!-- <div class="imtext">
+            <p style="font-size: x-large">Customer 1</p>
+            <p style="font-size: large">Trade</p>
+            <p style="font-size: small">Trade</p>
+            <p style="font-size: small">Trade</p>
+            <p style="font-size: small">Trade</p>
+          </div> -->
+            </div>
+            <div class="r2">
+                <img src="/northernlights.png">
+
+                <div class="imtext">
+                    <p style="font-size: x-large">Customer 1</p>
+                    <p style="font-size: large">Trade</p>
+                    <p style="font-size: small">Trade</p>
+                    <p style="font-size: small">Trade</p>
+                    <p style="font-size: small">Trade</p>
+                </div>
+                <!-- <div class="imtext">
+            <p style="font-size: x-large">Customer 1</p>
+            <p style="font-size: large">Trade</p>
+            <p style="font-size: small">Trade</p>
+            <p style="font-size: small">Trade</p>
+            <p style="font-size: small">Trade</p>
+          </div> -->
+            </div>
+            <div class="r3">
+                <img src="/seaview.png">
+
+                <div class="imtext">
+                    <p style="font-size: x-large">Customer 1</p>
+                    <p style="font-size: large">Trade</p>
+                    <p style="font-size: small">Trade</p>
+                    <p style="font-size: small">Trade</p>
+                    <p style="font-size: small">Trade</p>
+                </div>
+                <!-- <div class="imtext">
+            <p style="font-size: x-large">Customer 1</p>
+            <p style="font-size: large">Trade</p>
+            <p style="font-size: small">Trade</p>
+            <p style="font-size: small">Trade</p>
+            <p style="font-size: small">Trade</p>
+          </div> -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- pricing  -->
+    <div class="pricingtag">
+        <h1>Pricing</h1>
+        choose a pricing plan that fits your need .
+    </div>
+    <div class="pricing">
+        <div class="basic">
+            <div class="b1">Basic</div>
+
+            <div class="cont">
+                <div class="c1"><b>10 Gb</b> Storage</div>
+                <div class="c1"><b>10 Gb</b> Storage</div>
+                <div class="c1"><b>10 Gb</b> Storage</div>
+                <div class="c1"><b>10 Gb</b> Storage</div>
+            </div>
+            <div class="cont1">
+                <div class="c2">
+                    <span style="font-size: xx-large"> $ 10 </span>per Month
+                </div>
+            </div>
+            <div class="signup">
+                <input type="button" value="Sign Up" />
+            </div>
+        </div>
+        <div class="basic">
+            <div class="b2">Pro</div>
+
+            <div class="cont">
+                <div class="c1"><b>10 Gb</b> Storage</div>
+                <div class="c1"><b>10 Gb</b> Storage</div>
+                <div class="c1"><b>10 Gb</b> Storage</div>
+                <div class="c1"><b>10 Gb</b> Storage</div>
+            </div>
+            <div class="cont1">
+                <div class="c2">
+                    <span style="font-size: xx-large"> $ 10 </span>per Month
+                </div>
+            </div>
+
+            <div class="signup">
+                <input type="button" value="Sign Up" />
+            </div>
+        </div>
+        <div class="basic">
+            <div class="b1">Premium</div>
+
+            <div class="cont">
+                <div class="c1"><b>10 Gb</b> Storage</div>
+                <div class="c1"><b>10 Gb</b> Storage</div>
+                <div class="c1"><b>10 Gb</b> Storage</div>
+                <div class="c1"><b>10 Gb</b> Storage</div>
+            </div>
+            <div class="cont1">
+                <div class="c2">
+                    <span style="font-size: xx-large"> $ 10 </span>per Month
+                </div>
+            </div>
+            <div class="signup">
+                <input type="button" value="Sign Up" />
+            </div>
+        </div>
+    </div>
+
+    <div class="contact">
+        <div class="detail">
+            <div class="a1">
+                <div style="border-bottom: 5px solid green;">Contact Us</div>
+            </div>
+            <div class="address1">
+                <h2>Address</h2>
+                <div class="detail1">
+                    <div style="padding-bottom: 10px;">Swing by for a cup of cofee, or whatever</div>
+                    <div style="padding-bottom: 10px;"> Chicago, us</div>
+                    <div style="padding-bottom: 10px;">+00 91565 67678</div>
+                    <div style="padding-bottom: 10px;">test@test.com</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form">
+            <div class="style">
+                <label for="name" style="font-size: larger;">Name</label>
+                <input type="text" id="name" class="mgb10" style="padding: 10px;" />
+                <label for="email" style="font-size: larger;">Email</label>
+                <input type="email" id="email" class="mgb10" style="padding: 10px;" />
+                <label for="message" style="font-size: larger;">Message</label>
+                <input type="text" id="message" class="mgb10" style="padding: 10px;" />
+                <div class="bott">
+                    <div class="checkbox" style="font-size: larger;"><input type="checkbox" />I like it!</div>
+                    <div class="send"><input type="submit" value="SEND" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="map">
+        <img src="/map1.png" style="height: 90vh" />
+    </div>
+    <div class="footer">
+        <div>Follow Us</div>
+        <div class="logos">
+            <div class="f">
+                <img src="/linkedin.png" style="
+                width: 100%;
+                height: 40px;
+                object-fit: fill;
+                display: block;
+              " />
+            </div>
+            <div class="t">
+                <img src="/twitter.png" style="
+                width: 100%;
+                height: 40px;
+                object-fit: fill;
+                display: block;
+              " />
+            </div>
+            <div class="s">
+                <img src="/snap.png" style="
+                width: 100%;
+                height: 40px;
+                object-fit: fill;
+                display: block;
+              " />
+            </div>
+            <div class="in">
+                <img src="/facebook.png" style="
+                width: 100%;
+                height: 40px;
+                object-fit: fill;
+                display: block;
+              " />
+            </div>
+        </div>
+        <div>Powered by <u>Scuba Divers</u></div>
+    </div>
+    </div>
+</body>
+
 </html>
