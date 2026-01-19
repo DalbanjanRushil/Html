@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>InvestHub – System Documentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Inter, system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      display: flex;
+      height: 100vh;
+      background: #f8fafc;
+      color: #0f172a;
+      overflow: hidden;
+    }
+
+    /* ---------- SIDEBAR ---------- */
+    .sidebar {
+      width: 260px;
+      background: #0f172a;
+      color: #fff;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .sidebar h1 {
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 22px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 10px 14px;
+      margin-bottom: 6px;
+      color: #cbd5e1;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background: #1e293b;
+      color: #ffffff;
+    }
+
+    /* ---------- CONTENT ---------- */
+    .content {
+      flex: 1;
+      padding: 32px;
+      overflow-y: auto;
+      background: #ffffff;
+    }
+
+    .section {
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    h2 { font-size: 26px; margin-bottom: 10px; }
+    h3 { font-size: 18px; margin-top: 24px; margin-bottom: 10px; }
+
+    p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #334155;
+      margin-bottom: 10px;
+      max-width: 900px;
+    }
+
+    ul { padding-left: 18px; }
+    li { margin: 6px 0; color: #334155; }
+
+    .diagram {
+      margin-top: 16px;
+      padding: 18px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      overflow-x: auto;
+    }
+
+    @media(max-width: 900px) {
+      body { flex-direction: column; }
+      .sidebar { width: 100%; }
+      .content { padding: 20px; }
+    }
+  </style>
+
+  <!-- MERMAID -->
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      flowchart: { nodeSpacing: 70, rankSpacing: 90 }
+    });
+  </script>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <h1>INVESTHUB</h1>
+  <a href="#home" class="active">Home</a>
+  <a href="#flowchart">Flowchart</a>
+  <a href="#dfd">DFD</a>
+  <a href="#activity">Activity</a>
+  <a href="#sequence">Sequence</a>
+  <a href="#uml">UML</a>
+  <a href="#er">ER</a>
+  <a href="#usecase">Use Case</a>
+  <a href="#deployment">Deployment</a>
+  <a href="#components">Components</a>
+  <a href="#withdrawals">Withdrawals</a>
+  <a href="#datadictionary">Data Dictionary</a>
+  <a href="#api">API</a>
+  <a href="#glossary">Glossary</a>
+</nav>
+
+<main class="content">
+
+<!-- HOME -->
+<section class="section" id="home">
+  <h2>InvestHub – System Overview</h2>
+  <p>
+    InvestHub is a simulated investment and finance learning platform that enables users
+    to deposit funds, request withdrawals, track wallet balances, and receive profit
+    distributions controlled by administrators.
+  </p>
+</section>
+
+<!-- FLOWCHART -->
+<section class="section" id="flowchart">
+  <h2>Flowchart</h2>
+  <div class="diagram mermaid">
+flowchart TD
+    User --> Login
+    Login --> Dashboard
+    Dashboard --> Deposit
+    Dashboard --> Withdraw
+    Deposit --> Wallet
+    Withdraw --> AdminReview
+    AdminReview --> Wallet
+  </div>
+</section>
+
+<!-- ================== DFD (FIXED & COMPLETE) ================== -->
+<section class="section" id="dfd">
+  <h2>Data Flow Diagrams (DFD)</h2>
+
+  <h3>DFD Level 0 – Context Diagram</h3>
+  <div class="diagram mermaid">
+flowchart LR
+    User -->|Requests| System[InvestHub System]
+    System -->|Responses| User
+    Admin -->|Controls| System
+    System -->|Reports| Admin
+    System --> Razorpay
+    Razorpay --> System
+  </div>
+
+  <h3>DFD Level 1 – System Decomposition</h3>
+  <div class="diagram mermaid">
+flowchart LR
+    User --> Auth[Authentication]
+    Auth --> UsersDB[(Users)]
+
+    User --> Finance[Wallet & Finance]
+    Finance --> WalletDB[(Wallet)]
+    Finance --> TxDB[(Transactions)]
+
+    Finance --> Payment[Payment Processing]
+    Payment --> DepDB[(Deposits)]
+    Payment --> Razorpay
+
+    Admin --> WithdrawMgmt[Withdrawal Management]
+    WithdrawMgmt --> WdDB[(Withdrawals)]
+    WithdrawMgmt --> WalletDB
+
+    Admin --> Profit[Profit Distribution]
+    Profit --> WalletDB
+  </div>
+
+  <h3>DFD Level 2 – Deposit Processing</h3>
+  <div class="diagram mermaid">
+flowchart TD
+    User --> CreateOrder
+    CreateOrder --> Razorpay
+    Razorpay --> Verify
+    Verify --> UpdateDB
+    UpdateDB --> WalletDB
+  </div>
+
+  <h3>DFD Level 2 – Withdrawal Processing</h3>
+  <div class="diagram mermaid">
+flowchart TD
+    User --> RequestWithdraw
+    RequestWithdraw --> CheckBalance
+    CheckBalance --> Pending
+    Admin --> Decision
+    Decision --> Approve
+    Decision --> Reject
+  </div>
+</section>
+
+<!-- ACTIVITY -->
+<section class="section" id="activity">
+  <h2>Activity Diagram</h2>
+  <div class="diagram mermaid">
+flowchart TD
+    Start --> Login
+    Login --> Dashboard
+    Dashboard --> End
+  </div>
+</section>
+
+<!-- SEQUENCE -->
+<section class="section" id="sequence">
+  <h2>Sequence Diagram</h2>
+  <div class="diagram mermaid">
+sequenceDiagram
+    User->>System: Request
+    System->>DB: Query
+    DB->>System: Response
+    System->>User: Output
+  </div>
+</section>
+
+<!-- UML -->
+<section class="section" id="uml">
+  <h2>UML Class Diagram</h2>
+  <div class="diagram mermaid">
+classDiagram
+    User --> Wallet
+    Wallet --> Transaction
+  </div>
+</section>
+
+<!-- ER -->
+<section class="section" id="er">
+  <h2>ER Diagram</h2>
+  <div class="diagram mermaid">
+erDiagram
+    USER ||--o{ TRANSACTION : makes
+    USER ||--|| WALLET : owns
+  </div>
+</section>
+
+<!-- USE CASE -->
+<section class="section" id="usecase">
+  <h2>Use Case Diagram</h2>
+  <div class="diagram mermaid">
+flowchart LR
+    User --> Deposit
+    User --> Withdraw
+    Admin --> Approve
+  </div>
+</section>
+
+<!-- DEPLOYMENT -->
+<section class="section" id="deployment">
+  <h2>Deployment Diagram</h2>
+  <div class="diagram mermaid">
+flowchart TD
+    Client --> Server
+    Server --> Database
+  </div>
+</section>
+
+<!-- COMPONENTS -->
+<section class="section" id="components">
+  <h2>Component Diagram</h2>
+  <div class="diagram mermaid">
+flowchart LR
+    UI --> API
+    API --> DB
+  </div>
+</section>
+
+<!-- WITHDRAWALS -->
+<section class="section" id="withdrawals">
+  <h2>Withdrawal States</h2>
+  <div class="diagram mermaid">
+stateDiagram-v2
+    Pending --> Approved
+    Pending --> Rejected
+  </div>
+</section>
+
+<!-- DATA DICTIONARY -->
+<section class="section" id="datadictionary">
+  <h2>Data Dictionary</h2>
+  <ul>
+    <li>User</li>
+    <li>Wallet</li>
+    <li>Transaction</li>
+  </ul>
+</section>
+
+<!-- API -->
+<section class="section" id="api">
+  <h2>API Endpoints</h2>
+  <ul>
+    <li>/api/auth</li>
+    <li>/api/deposit</li>
+    <li>/api/withdraw</li>
+  </ul>
+</section>
+
+<!-- GLOSSARY -->
+<section class="section" id="glossary">
+  <h2>Glossary</h2>
+  <ul>
+    <li><b>User:</b> Platform user</li>
+    <li><b>Admin:</b> Platform controller</li>
+  </ul>
+</section>
+
+</main>
+</body>
+</html>

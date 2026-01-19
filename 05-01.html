@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        Landing page
+
+    </title>
+
+
+
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0px;
+
+            box-sizing: border-box;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            background-color: rgb(96, 123, 144);
+            position: sticky;
+            top: 0;
+            z-index: 1;
+
+        }
+        
+        .left {
+            display: flex;
+            flex: 1;
+        }
+        
+
+        .logo,
+        .world,
+        .hu,
+        .ma,
+        .no  {
+            display: flex;
+            flex-direction: column;
+
+            color: white;
+            padding: 10px;
+
+            font-size: larger;
+        }
+
+        .logo {
+            background-color: black;
+        }
+
+        .right {
+            display: flex;
+        }
+
+        .r1 {
+            display: flex;
+            flex-direction: column;
+
+            color: white;
+            padding: 10px;
+
+            font-size: larger;
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            background-color: rgb(255, 255, 255);
+            flex: 1;
+            padding: 20px 40px 0px 40px;
+            box-sizing: border-box;
+
+        }
+
+        /* Column 1  */
+        .column1 {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(255, 255, 255);
+            flex: 1.5;
+        }
+
+        /* sub sections of column 1  */
+        .profile {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(255, 255, 255);
+            padding: 10px;
+            gap: 2px;
+            margin: 10px;
+            
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            font-size: larger;
+            border-radius: 5px;
+
+        }
+
+        .profile1 {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(122, 139, 179);
+            font-size: larger;
+            padding: 10px;
+            gap: 2px;
+            margin: 10px;
+            color: white;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 5px;
+        }
+
+        .intrest {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(255, 255, 255);
+            padding: 10px;
+            gap: 2px;
+            margin: 10px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            font-size: larger;
+            border-radius: 5px;
+        }
+
+        .int {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px;
+            gap: 5px;
+            
+        }
+
+        .darkgrey {
+            display: flex;
+            gap: 2px;
+            background-color: darkgrey;
+            color: white;
+        }
+
+        .notification {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(222, 217, 217);
+            padding: 10px;
+            gap: 2px;
+            margin: 10px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            font-size: larger;
+            border-radius: 5px;
+        }
+
+        .container img {
+
+            max-width: 100%;
+
+            object-fit: fill;
+            display: block;
+
+        }
+
+        .img1 {
+            align-items: center;
+            justify-content: center;
+            max-width: 200px;
+
+
+            display: flex;
+            flex: 1 1 25%;
+            margin: 10px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .p14 {
+            align-items: center;
+            justify-content: center;
+
+
+            border-radius: 5px;
+            display: flex;
+            flex: 1 1 25%;
+            margin: 10px;
+            box-sizing: border-box;
+            position: relative;
+            gap: 10px;
+        }
+
+        .p34 {
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+
+            border-radius: 5px;
+            display: flex;
+            flex: 1 1 50%;
+            margin: 10px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /* column 2 */
+        .column2 {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(255, 255, 255);
+            flex: 3;
+            font-size: larger;
+
+
+        }
+
+        /* sub sections of column 2  */
+        .post {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(255, 255, 255);
+            padding: 20px;
+            gap: 5px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        .post1 {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(255, 255, 255);
+            padding: 20px;
+            gap: 2px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        .p11,
+        .p21,
+        .p31 {
+            display: flex;
+            align-items: center;
+            /* justify-content: center; */
+            background-color: rgb(255, 255, 255);
+            
+            gap: 2px;
+            flex: 1;
+            margin: 10px;
+        }
+
+        .post2 {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(255, 255, 255);
+            padding: 20px;
+            gap: 2px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        .post3 {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(255, 255, 255);
+            padding: 20px;
+            gap: 2px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        /* column 3 */
+        .column3 {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(255, 255, 255);
+
+            flex: 1;
+            font-size: larger;
+
+        }
+
+        /* sub sections of column 3 */
+        .event {
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            background-color: rgb(255, 255, 255);
+            padding: 10px;
+            gap: 2px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin: 10px;
+            border-radius: 5px;
+
+        }
+
+        input[type=button] {
+            display: flex;
+            padding: 10px;
+            flex: 1;
+            border: none;
+            width: 100%;
+            font-size: larger;
+        }
+
+        .buttons {
+            display: flex;
+            padding: 10px;
+            gap: 2px;
+            width: 100%;
+
+        }
+
+        .request {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgb(255, 255, 255);
+            padding: 10px;
+            gap: 2px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        .ads {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(255, 255, 255);
+            padding: 30px;
+            gap: 2px;
+            margin: 10px;
+            align-items: center;
+            justify-content: center;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin: 10px;
+            border-radius: 5px;
+
+        }
+
+        .fly {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(255, 255, 255);
+            padding: 40px;
+            margin: 10px;
+            gap: 2px;
+            align-items: center;
+            justify-content: center;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin: 10px;
+            border-radius: 5px;
+
+
+        }
+
+        /* Footer */
+        footer {
+            display: flex;
+            background-color: rgb(66 68 70);
+            /* position: sticky;
+            bottom: 0; */
+            padding: 30px;
+        }
+
+        .footer1 {
+            display: flex;
+            background-color: rgb(90 100 104);
+            padding: 10px;
+        }
+
+        .postbutton {
+            display: flex;
+            font-size: larger;
+            background-color: rgb(122, 139, 179);
+            color: white;
+            padding: 10px 20px 10px 20px;
+            width: fit-content;
+        }
+
+        .react {
+            display: flex;
+            margin: 10px;
+            gap: 5px;
+        }
+
+        .like,
+        .comment {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(86, 104, 142);
+            padding: 10px;
+            color: white;
+            font-size: larger;
+
+        }
+
+        .p14 {
+            display: flex;
+        }
+
+        
+
+
+        .html, .css ,.js{
+           
+            column-gap: 10px;
+            flex-wrap: wrap;
+            padding: 5px;
+        }
+        .html {
+            background-color: grey;
+            color: black;
+        }
+        .css{
+           background-color: darkgrey ;
+            color: black; 
+        }
+        .js{
+            background-color: lightgrey;
+            color: black;
+        }
+        .p12 ,.p22,.p32{
+            display: flex;
+            flex-direction: column;
+            align-items: left   ;
+            padding: 0px 0px 0px 10px;
+        }
+        hr{
+            width: 100%;
+        }
+        .mix{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .profiletext1{
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            gap: 10px;
+           
+        }
+      
+        
+    </style>
+</head>
+
+<body>
+    <div class="maincontainer">
+    <nav>
+        <div class="left">
+            <div class="logo">Logo </div>
+            <div class="world">Wo</div>
+            <div class="hu">Hu</div>
+            <div class="ma">Ma</div>
+            <div class="no">No</div>
+        </div>
+        <div class="right">
+            <div class="r1">RR</div>
+        </div>
+    </nav> 
+    <div class="container">
+       
+        <div class="column1">
+            <div class="profile">
+                <div class="mix">
+                <div class="profiletext" style="font-size: x-large;"> My Profile</div>
+                <div class="img1">
+                    <img src="/human.png" style="border-radius: 50%; width: 400px;  ">
+                </div>
+                </div>
+                
+                <div class="profiletext1">
+                  <div>  Designer</div>
+                   <div>london, UK</div> 
+                  <div>April 1,1989</div>  
+                </div>
+                <!-- <p></p>
+                      <p> </p>
+                        <p></p> -->
+                </pre>
+            </div>
+            <div class="profile1">
+                <p>My Groups</p>
+                <p> My events</p>
+                <p>April 1,1989</p>
+            </div>
+            <div class="intrest">
+                <label>Intrest</label>
+                <div class="int">
+                    <div class="html">HTML</div>
+                    <div class="html">CSS</div>
+                    <div class="html">javascript</div>
+                    <div class="css">React</div>
+                    <div class="css">Node.js</div>
+                    <div class="css">Angular</div>
+                    <div class="js">Vue.js</div>
+                    <div class="js">Android</div>
+                    <div class="js">Python</div>
+                </div>
+            </div>
+            <div class="notification">
+                <h2>Hey ! </h2><br> are looking at your profile . find out who ??
+            </div>
+        </div>
+        <div class="column2">
+            <div class="post">
+                <p style="opacity: 0.5; margin: 0px;">Social Media template</p>
+                <input type="text" style="padding: 10px;" placeholder="Status : Feeling Blue">
+                <div class="postbutton">Post</div>
+            </div>
+            <div class="post1">
+                <div class="p11">
+                    <div style="display: flex; align-items: center; flex: 1; gap: 3px;">
+                    <img src="/girl.png" style="border-radius: 50%; width: 60px ;height: auto;  ">
+                    <div class="n1">John Doe</div>
+                    </div>
+                    <div class="min" style="color:lightgray; font-size: medium;">1 min</div>
+                </div>
+                <hr>
+                <div class="p12">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.
+                </div>
+                <div class="p14">
+                    <div class="img2">
+                        <img src="/imrow11.png">
+
+                    </div>
+                    <div class="img2">
+                        <img src="/imrow11.png">
+                    </div>
+                </div>
+
+                <div class="p13">
+                    <div class="react">
+                        <div class="like">Like</div>
+                        <div class="comment">Comment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="post2">
+                <div class="p21">
+                    <div style="display: flex; align-items: center; flex: 1; gap: 3px;">
+                    <img src="/girl.png" style="border-radius: 50%; width: 60px ;height: auto;  ">
+                    <div class="n1">John Doe</div>
+                    </div>
+                    <div class="min" style="color:lightgray; font-size: medium;">7 min</div>
+                </div>
+                <hr>
+                <div class="p22">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.
+                </div>
+                <div class="p23">
+                    <div class="react">
+                        <div class="like">Like</div>
+                        <div class="comment">Comment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="post3">
+                <div class="p31">
+                    <div style="display: flex; align-items: center; flex: 1; gap: 3px;">
+                    <img src="/girl.png" style="border-radius: 50%; width: 60px ;height: auto;">
+                    <div class="n1">John Doe</div>
+                    </div>
+                    <div class="min" style="color:lightgray; font-size: medium;">16 min</div>
+                </div>
+                <hr>
+                <div class="p32">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.
+                </div>
+                <div class="p34">
+                    <img src="/imrow11.png">
+                </div>
+                <div class="p33">
+                    <div class="react">
+                        <div class="like">Like</div>
+                        <div class="comment">Comment</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column3">
+            <div class="event">Upcoming Events
+                <img src="/northernlights.png">
+                <p>Holiday</p>
+                <p>friday : 15:00 </p>
+                <input type="button" value="Info">
+            </div>
+            <div class="request">Freind Request
+                <img src="/4.png" height="200px">
+                Jane Dai
+                <div class="buttons">
+                    <input type="button" value="True" style="background-color: lightgreen;"><input type="button"
+                        value="False" style="background-color: lightcoral;">
+                </div>
+            </div>
+            <div class="ads">ADS</div>
+            <div class="fly">BEE</div>
+        </div>
+
+    </div>
+    <footer>
+        Footer
+    </footer>
+    <div class="footer1">
+        Powered By DR
+    </div>
+
+    
+</div>
+</body>
+
+</html>

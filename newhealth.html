@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health</title>
+    <style>
+       body{
+         display: flex;
+        flex-direction: column;
+        margin: 0px;
+        padding: 0px;
+         box-sizing: border-box;
+       }
+       .maain{
+          display: flex;
+        flex-direction: column;
+        margin: 0px;
+        padding: 0% 10%;
+       
+        position: relative;
+       }
+       .main{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        }
+        .nav{
+        display: flex;
+        justify-content: space-between;
+        }
+        .left{
+        display: flex;
+        
+        font-size: larger;
+        align-items: center;
+        padding:10px 0px;
+        }
+        .logo , .logo1{
+        display: flex;
+        @media (max-width:600px){
+            align-items: center;
+            justify-content: center;
+        }
+        }
+    .logott , .logott1{
+        display: flex;
+        flex-direction: column;
+        padding: 10px 15px;
+        background-color: rgb(30, 40, 220);
+        border-radius: 50%;
+        color: white;
+         @media (max-width:600px){
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    .logot , .logot1{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+         @media (max-width:600px){
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    .right{
+        display: flex;
+        
+        align-items: center;
+        justify-content: space-around;
+        color: lightgrey;
+        font-size: larger;
+        @media(max-width:600px){
+        display: none;
+    }
+    }
+    .home , .fad ,.apps , .testimonial , .about {
+        display: flex;
+        flex-direction: column;
+       padding: 0px 20px ;
+        
+    }
+    .home:hover , .fad:hover , .apps:hover ,.testimonial:hover ,.about:hover{
+        color: #030303;
+       
+        cursor: pointer;
+    }
+    .section1{
+        display: flex;
+        flex-direction: column;
+       
+        @media(max-width:600px){
+       flex-direction: row;
+    }
+    }
+    .mains1 {
+       
+        display: flex;
+        justify-content: space-around;
+         @media(max-width:600px){
+       flex-direction: column;
+    }
+        
+     }
+    .dots{
+        position: absolute;
+        top: 20%;
+        left: 0%;
+        opacity: 0.3;
+        
+    }
+    .dots img{
+        height: 100px;
+        object-fit: contain;
+        @media(max-width:600px){
+        display: none;
+    }
+    }
+    .dotss2{
+       position: absolute; 
+       
+       left: 100%;
+
+    }
+    .dotss2 img{
+        height:70px;
+        object-fit: contain;
+         @media(max-width:600px){
+       display: none;
+    }
+    }
+    .lefts1{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        align-items: left;
+        justify-content: center;
+        
+         @media(max-width:600px){
+      order: 2;
+      align-items: center;
+    }
+    }
+    .s1t1{
+        
+        font-size: x-large;
+        font-style: bold;
+        max-width: 50%;
+        @media(max-width:600px){
+        font-size: large;
+        max-width: 90%;
+         @media(max-width:600px){
+       align-items: center;
+    }
+    }
+
+
+    }
+    .s1t2{
+        font-size: large;
+        color: lightgrey;
+        max-width: 90%;
+        @media(max-width:600px){
+        font-size: medium;
+        justify-content: center;
+    }
+    }
+
+    .s1b1{
+        background-color: rgb(113, 191, 216);
+        display: flex;
+        padding: 10px;
+        border-radius: 50px;
+        width: fit-content;
+        color: white;
+        margin-top: 20px;
+        @media(max-width:600px){
+        
+    }
+    }
+    .rights1{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    .rights1 img {
+           max-width: 100%;
+    object-fit: fill;
+    display: block;
+    @media(max-width:600px){
+       order: 1;
+    }
+    }
+
+
+    /* Section 2  */
+
+    .section2{
+        display: flex;
+        flex-direction: column;
+        /* height: 100%; */
+    }
+    .block{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .block img{
+       height: 80vh;
+        object-fit: fill;
+        
+        position: absolute;
+        top: 10%;
+        left: -14%;
+        @media(max-width:600px){
+       display: none;
+    }
+
+    }
+    .maincontainer{
+        position: relative;
+      
+        
+        /* position: absolute; */
+        /* height: 100vh; */
+        /* display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+     .mct1 {
+        display: flex;
+        color: #030303;
+        font-size: xx-large;
+        align-items: center;
+        justify-content: center;
+       
+        width: fit-content;
+    }
+    .mct2{
+        display: flex;
+        flex-direction: column;
+        font-size: large;
+        align-items: center;
+        justify-content: center;
+        max-width: 55%;
+        color: lightgrey;
+        margin-top: 20px;
+        @media(max-width:600px){
+          max-width: 80%;  
+        }
+    }
+    .row1 {
+      
+        display: flex;
+        flex-wrap: wrap;
+        
+        gap: 20px;
+        margin: auto;
+        max-width: 90%;
+        justify-content: space-around;
+       padding: 20px;
+
+    }
+    .r1card1 , .r1card2 , .r1card3 , .r2card1 ,.r2card2 , .r2card3{
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(255, 255, 255);
+        border-radius: 20px;
+        padding: 30px;
+        height: 270px;
+        width: 270px;
+        /* font-size: larger; */
+        gap: 10px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    .r1image1 img{
+       width: 80px;
+       height: 80px;
+        object-fit: fill;
+    }
+    .r1t1 {
+        display: flex;
+        flex-direction: column;
+        font-size: xx-large;
+        row-gap: 10px;
+    }
+    .r1t2{
+        display: flex;
+        flex-direction: column;
+        font-size: x-large;
+        row-gap: 10px;
+    }
+
+    .lmbutton {
+        display: flex;
+        flex-direction: column;
+        color: rgb(101, 101, 247);
+        border: 1px solid rgb(101, 101, 247);
+        padding: 10px 20px;
+        border-radius: 50px ;
+        width: fit-content;
+        margin-top: 10px;
+
+    }
+.mains2{
+    position: relative;
+   
+    
+}
+
+
+ .section3{
+        display: flex;
+        flex-direction: column;
+            @media (max-width: 600px) {
+        flex-direction: row;
+        align-items: center;
+          padding: 10px 0px 10px 0px ;
+    }
+
+        
+    }
+   .mains3{
+    display: flex;
+    justify-content: space-around;
+         @media (max-width: 600px) {
+        flex-direction: column;
+    }
+
+   }
+   .lefts3{
+        display: flex;
+    flex-direction: column;
+    flex: 1;
+     
+        
+
+   }
+   .lefts3 img{
+    max-width: 100%;
+    object-fit: fill;
+    display: block;
+        @media (max-width: 600px) {
+        order: 2;
+    }
+   }
+   .rights3{
+        display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: left;
+    justify-content: center;
+    padding: 0px 0px 0px 20px;
+         @media (max-width: 600px) {
+        order: 1;
+        align-items: center;
+    }
+        
+   }
+   .s3t1{
+   
+   font-size: x-large;
+    font-style: bold;
+    max-width: 50%;
+            @media (max-width: 600px) {
+            align-items: center;
+           justify-content: center;
+            font-size: large;
+        max-width: 90%;
+        }
+    
+   }
+   .s3t2{
+    font-size: large;
+    color: lightgrey;
+    max-width: 90%;
+    
+
+   }
+  
+   /* Section 4  */
+   .section4{
+  display: flex;
+    flex-direction: column;
+        @media (max-width: 600px) {
+        flex-direction: row;
+        align-items: center;
+        padding: 10px 0px 10px 0px ;
+    }
+   }
+   .mains4{
+        display: flex;
+    justify-content: space-around;
+        @media (max-width: 600px) {
+        flex-direction: column;
+    }
+   }
+   .lefts4{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: left;
+    justify-content: center;
+        @media (max-width: 600px) {
+        order: 2;
+        align-items: center;
+    }
+    
+   }
+   .rights4{
+        display: flex;
+    flex-direction: column;
+    flex: 1;
+   }
+   .rights4 img{
+   max-width: 100%;
+    object-fit: fill;
+    display: block;
+    @media (max-width: 600px) {
+        order: 1;
+    }
+   }
+   .s4t1{
+        font-size: x-large;
+    font-style: bold;
+    max-width: 50%;
+     @media (max-width: 600px) {
+            align-items: center;
+            font-size: large;
+        max-width: 90%;
+        justify-content: center;
+        }
+
+   }
+   .s4t2{
+    font-size: large;
+    color: lightgrey;
+    max-width: 90%;
+   }
+
+   /* Section 5 */
+    .section5{
+     display: flex;
+        flex-direction: column;
+        
+        align-items: center;
+        justify-content: center;
+         @media(max-width:600px){
+
+        flex-direction: row;
+        h1{
+            margin: 0px;
+            text-align: center;
+        }
+    }
+   }
+   .mains5{
+   display: flex;
+   flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: rgb(102, 176, 246);
+    border-radius: 20px;
+    color: white;
+      
+  
+   }
+   .s5top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0px;
+     
+
+   }
+   .lr{
+    display: flex;
+    @media(max-width:600px){
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+   }
+   
+   .lefts5{
+    padding: 30px 0px;
+    display: flex;
+   flex: 1;
+   align-items: center;
+   justify-content: center;
+   height: 30vh;
+   @media(max-width:600px){
+    flex-direction: column;
+   
+   }
+   }
+   .lefts5 img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: fill;
+
+   }
+   .s5t1{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0px 0px 30px;
+   }
+   .rights5{
+    height: 30vh;
+    padding: 30px 0px;
+    display: flex;
+   flex: 1;
+   align-items: center;
+   @media(max-width:600px){
+    justify-content: center;
+   }
+   }
+   .s5t2{
+    font-size: x-large;
+    max-width: 70%;
+    
+   }
+
+   /* Section 5 */
+.section6 , .main6{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    justify-content: center;
+
+    
+   }
+   .sec6d1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @media(max-width:600px){
+        flex-direction: column;
+        padding: 10px 0px 10px 0px;
+    }
+   }
+   .sec6d2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    @media(max-width:600px){
+        flex-direction: column;
+    }
+   }
+   .sec6d2 img{
+    max-width: 100%;
+    object-fit: fill;
+    display: block;
+   }
+      .s6t1{
+    margin: 10px 20px;
+   }
+   .s6t2{
+     margin: 10px 20px;
+
+   }
+   h2{
+    margin: 0px;
+   }
+   .s6t3{
+    color: rgb(102, 176, 246);
+     margin: 10px 20px;
+   }
+
+  
+
+/* footer */
+   .footer{
+    display: flex;
+    flex-direction: column;
+    background-color: #0073cf;
+   
+  
+ }
+ .mainf{
+    display: flex;
+    flex-direction: column;
+    margin: 5% 10%;
+    font-size: larger;
+    color: white;
+    @media(max-width:600px){
+        margin: 10px;
+    }
+     
+    
+ }
+ .mainfooter{
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+    @media(max-width:600px){
+        flex-direction: column;
+        align-items:center ;
+    }
+
+ }
+
+ .r1t2{
+    opacity: 0.3;
+ }
+ .f1t2 , .f1t3{
+    @media(max-width:600px){
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+ }
+ 
+ .f2 , .f3 , .f4{
+    @media(max-width:600px){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+ }
+
+ 
+
+    </style>
+</head>
+<body>
+    <div class="maain">
+    <div class="main">
+        <div class="nav">
+            <div class="left">
+                <div class="logo">
+                   <div class="logott">T</div> 
+                    <div class="logot"><b>Trafalgar</b></div>
+                </div>
+            </div>
+            <div class="right">
+                    <div class="home">Home</div>
+                    <div class="fad">Find a Doctor</div>
+                    <div class="apps">Apps</div>
+                    <div class="testimonial">Testimonial</div>
+                    <div class="about">About Us</div>
+                    
+            </div>
+        </div>
+        <div class="section1">
+             <div class="mains1">
+                <div class="dots" >
+                <img src="/healthg.png" >
+                </div>
+            <div class="lefts1">
+                <div class="s1t1"><h2>Virtual healthcare for you</h2></div>
+                <div class="s1t2" >Trafalgar provides progressive, and affordable healthcare, accessible on mobile and online for everyone</div>
+                <div class="s1b1">Consult Today</div>
+            </div>
+
+            <div class="rights1">
+                <img src="/healths1i1.png">
+            </div>
+            </div>
+        </div>
+        <div class="section2">
+            <div class="mains2">
+                <div class="block">
+                    <img src="/block.png">
+                </div>
+                <div class="dotss2" >
+                <img src="/healthg.png" >
+                </div>
+            
+                <div class="maincontainer">
+                    <div class="mct1">Our Service</div>
+                    <div class="s6t5" >_______</div>
+                    <div class="mct2">We provide to you the best choiches for you. Adjust it to your health needs and make sure your undergo treatment with our highly qualified doctors you can consult with us which type of service is suitable for your health</div>
+                <div class="row1">
+                    <div class="r1card1">
+                        <div class="r1image1"><img src="/r1image1.png"></div>
+                        <div class="r1t1">Search Doctor</div>
+                        <div class="r1t2">Choose your doctor from thousands of specialist, general, and trusted hospitals</div>
+                    </div>
+                    <div class="r1card2">
+                        <div class="r1image1"><img src="/r1image2.png"></div>
+                        <div class="r1t1">Search Doctor</div>
+                        <div class="r1t2">Choose your doctor from thousands of specialist, general, and trusted hospitals</div>
+                    </div>
+                    <div class="r1card3">
+                        <div class="r1image1"><img src="/r1image3.png"></div>
+                        <div class="r1t1">Search Doctor</div>
+                        <div class="r1t2">Choose your doctor from thousands of specialist, general, and trusted hospitals</div>
+                    </div>
+                
+                     <div class="r2card1">
+                        <div class="r1image1"><img src="/r1image1.png"></div>
+                        <div class="r1t1">Search Doctor</div>
+                        <div class="r1t2">Choose your doctor from thousands of specialist, general, and trusted hospitals</div>
+                    </div>
+                    <div class="r2card2">
+                        <div class="r1image1"><img src="/r1image1.png"></div>
+                        <div class="r1t1">Search Doctor</div>
+                        <div class="r1t2">Choose your doctor from thousands of specialist, general, and trusted hospitals</div>
+                    </div>
+                    <div class="r2card3">
+                        <div class="r1image1"><img src="/r1image1.png"></div>
+                        <div class="r1t1">Search Doctor</div>
+                        <div class="r1t2">Choose your doctor from thousands of specialist, general, and trusted hospitals</div>
+                    </div>
+                </div>
+                <div class="lmbutton">Learn More</div>
+                </div>
+            
+         </div>
+         </div>
+         
+          <div class="section3">
+            <div class="mains3">
+                <div class="lefts3">
+                    <img src="/section3img.png">
+                </div>
+                <div class="rights3">
+                    <div class="s3t1"><h2>Leading Healthcare Providers</h2> </div>
+                    <div class="s6t5" >_______</div>
+                    
+                    <div class="s3t2">Trafalgar provides progressive, and affordable healthcare, accessible on mobile and online for everyone. To us, it’s not just work. We take pride in the solution we deliver.  </div>
+                    <div class="lmbutton">Learn More</div>
+                </div>
+            </div>
+         </div>
+         <div class="section4">
+            <div class="mains4">
+                <div class="lefts4">
+                    <div class="s4t1"><h2 style="margin: 0px;">Download our mobile apps</h2></div>
+                    <div class="s6t5" >_______</div>
+                     <div class="s4t2">Our dedicated patient engagement app and web portal allow you to access information instantaneously (no tedeous form, long calls, or administrative hassle) and securely</div>'
+                      <div class="lmbutton">Download</div>
+                </div>
+                <div class="rights4">
+                    <img src="/section41.png">
+                </div>
+            </div>
+         </div>
+          <div class="section5">
+            <div class="mains5">
+                <div class="s5top">
+                    <h1> What our  customer are saying</h1>
+                    <div class="s6t5" >_______</div>
+                </div>
+                <div class="lr">
+                <div class="lefts5">
+                    <img src="/section51.png">
+                   <div class="s5t1"> <h2>Edward Newgate</h2>
+                    Founder circle
+                    </div>
+                </div>
+                <div class="rights5">
+                    <div class="s5t2">
+                    “Our dedicated patient engagement app and web portal allow you to access information instantaneously (no tedeous form, long calls, or administrative hassle) and securely”
+                    </div>
+                </div>
+                </div>
+            </div>
+         </div>
+          <div class="section6">
+           <div class="mains6">
+            <div class="sec6d1">
+                <div class="s6t4"><h1 style="margin: 0px;">Check out our latest article</h1></div>
+                <div class="s6t5" >_______</div>
+            </div>
+            <div class="sec6d2">
+                <div class="card1">
+                    <img src="/sect6.png">
+                        <div class="s6t1">
+                          <h2>Disease detection, check up in the laboratory</h2>  
+                        </div>
+                        <div class="s6t2">
+                           In this case, the role of the health laboratory is very important to do a disease detection...
+                        </div>
+                        <div class="s6t3">Read More</div>
+                </div>
+                <div class="card1">
+                    <img src="/sect6.png">
+                        <div class="s6t1">
+                          <h2>Disease detection, check up in the laboratory</h2>  
+                        </div>
+                        <div class="s6t2">
+                           In this case, the role of the health laboratory is very important to do a disease detection...
+                        </div>
+                        <div class="s6t3">Read More</div>
+                </div>
+                <div class="card1">
+                    <img src="/sect6.png">
+                        <div class="s6t1">
+                          <h2>Disease detection, check up in the laboratory</h2>  
+                        </div>
+                        <div class="s6t2">
+                           In this case, the role of the health laboratory is very important to do a disease detection...
+                        </div>
+                        <div class="s6t3">Read More</div>
+                </div>
+            </div>
+            <div class="sec6d3">
+
+            </div>
+           </div>
+         </div>
+         
+    </div>
+    </div>
+     <div class="footer">
+            <div class="mobilef">
+            
+            </div>
+            <div class="mainf">
+            <div class="mainfooter">
+                <div class="f1">
+                    <div class="logo1">
+                   <div class="logott1">T</div> 
+                    <div class="logot1"><b>Trafalgar</b></div>
+                </div>
+                    <div class="f1t2">Trafalgar provides progressive, and affordable healthcare, accessible on mobile and online for everyone accessible on mobile and online for everyone</div>
+                    <div class="f1t3">  ©Trafalgar PTY LTD 2020. All rights reserved</div>
+                </div>
+                <div class="f2">
+                    <div class="f2t1"><h3>Company</h3></div>
+                    <div class="f2t2">About</div>
+                    <div class=f2t3>Testimonials</div>
+                    <div class="f2t4"> a doctor</div>
+                    <div class="f2t5">Apps</div>
+                </div>
+                <div class="f3">
+                        <div class="f2t1"><h3>Company</h3></div>
+                    <div class="f2t2">About</div>
+                    <div class=f2t3>Testimonials</div>
+                    <div class="f2t4"> a doctor</div>
+                    <div class="f2t5">Apps</div>
+                </div>
+                <div class="f4">
+                        <div class="f2t1"><h3>Company</h3></div>
+                    <div class="f2t2">About</div>
+                    <div class=f2t3>Testimonials</div>
+                    <div class="f2t4"> a doctor</div>
+                    <div class="f2t5">Apps</div>
+                </div>
+            </div>
+            </div>
+         </div>
+</body>
+</html>

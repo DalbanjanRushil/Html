@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sequence – InvestHub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+mermaid.initialize({ startOnLoad: true });
+</script>
+</head>
+
+<body>
+
+<div class="mobile-toggle">☰ Menu</div>
+
+<div class="sidebar">
+  <h1>INVESTHUB</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="flowchart.html">Flowchart</a></li>
+    <li><a href="dfd.html">DFD</a></li>
+    <li><a href="activity.html">Activity</a></li>
+    <li><a href="sequence.html" class="active">Sequence</a></li>
+    <li><a href="uml.html">UML</a></li>
+    <li><a href="er.html">ER</a></li>
+    <li><a href="usecase.html">Use Case</a></li>
+    <li><a href="deployment.html">Deployment</a></li>
+    <li><a href="components.html">Components</a></li>
+    <li><a href="withdrawal-state.html">Withdrawals</a></li>
+    <li><a href="datadictionary.html">Data Dictionary</a></li>
+    <li><a href="api.html">API Endpoints</a></li>
+    <li><a href="glossary.html">Glossary</a></li>
+  </ul>
+</div>
+
+<div class="content">
+  <h2>Deposit Sequence</h2>
+  <div class="diagram mermaid">
+sequenceDiagram
+    User->>Frontend: Input Amount & Click Deposit
+    Frontend->>Backend: Create Razorpay Order
+    Backend->>Razorpay: Generate Order
+    Razorpay->>Frontend: Checkout UI
+    User->>Razorpay: Pay
+    Razorpay->>Backend: Webhook Callback
+    Backend->>DB: Update Deposit + Wallet + Txn
+    Backend->>Socket: Emit Live Update
+    Backend->>Email: Send Confirmation
+    Backend->>User: Success Response
+  </div>
+
+  <h2>Withdrawal Sequence</h2>
+  <div class="diagram mermaid">
+sequenceDiagram
+    User->>Frontend: Request Withdrawal
+    Frontend->>Backend: Send Amount
+    Backend->>DB: Fetch Wallet
+    Backend->>Backend: Validate & Lock Balance
+    Backend->>DB: Create Withdrawal Pending
+    Backend->>Socket: Notify Admin
+    Admin->>Backend: Approve/Reject
+    Backend->>DB: Update Withdrawal
+    alt Reject
+      Backend->>DB: Refund Wallet
+    end
+    Backend->>Email: Send Notification
+    Backend->>Socket: Notify User Update

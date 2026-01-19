@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Networking</title>
+        <style>
+.body{
+                display: flex;
+                flex-direction: column;
+                height: 100vh;
+                margin: 0px;
+                box-sizing: border-box;
+            }
+            /* Navbar */
+            nav{
+                display: flex;
+                background-color: rgb(150, 154, 157);
+               padding: 10px;
+            }
+
+            /* Main Container */
+            .container{
+                display: flex;
+                background-color: rgb(255, 255, 255);
+                flex: 1;
+                padding: 0px 40px 0px 40px;
+            }
+            /* Column 1  */
+            .column1{
+                display: flex;
+                flex-direction: column;
+                background-color: rgb(255, 255, 255);
+                padding: 10px;
+                flex: 1;
+            }
+            /* sub sections of column 1  */
+            .profile {
+                display: flex;
+                flex-direction: column;
+                background-color: rgb(255, 255, 255);
+                padding: 10px;
+                gap: 2px;
+              margin: 10px;
+              align-items: center;
+              justify-content: center;
+              border: 1px solid black;
+                
+            }
+             .profile1{
+                 display: flex;
+                flex-direction: column;
+                background-color: rgb(122, 121, 121);
+                padding: 10px;
+                gap: 2px;
+                margin: 10px;
+                color: white;
+             }
+             .intrest{
+                 display: flex;
+                flex-direction: column;
+                background-color: rgb(255, 255, 255);
+                padding: 10px;
+                gap: 2px;
+                margin: 10px;
+                border: 1px solid black;
+             }
+             .int{
+                display: flex;
+                padding: 5px;
+                gap: 2px;
+             }
+             .notification{
+                 display: flex;
+                flex-direction: column;
+                background-color: rgb(205, 199, 199);
+                padding: 10px;
+                gap: 2px;
+                margin: 10px;
+             }
+             .container img{
+            
+                 max-width: 100%;
+                 height: 280px;
+                 object-fit: fill;
+                 display: block;
+                 
+                }
+             .img1{
+                align-items: center;
+                justify-content: center;
+                width: 200px;
+                
+
+                 display: flex;
+            flex: 1 1 25%;
+            margin: 10px;
+            box-sizing: border-box;
+            position: relative;
+             }
+
+             /* column 2a */
+             .column2a{
+                display: flex;
+                
+                background-color: rgb(255, 255, 255);
+                 padding: 10px;
+                flex:4;
+                 margin: 10px;
+             }
+             .column2a1 {
+                display: flex;
+                flex-direction: column;
+                background-color: rgb(255, 255, 255);
+                 padding: 10px;
+                flex:3;
+                 
+             }
+             /* column 1  */
+             .column2a2{
+                display: flex;
+                flex-direction: column;
+                background-color: rgb(255, 255, 255);
+                 padding: 10px;
+                flex: 1;
+                 margin: 10px;
+             }
+              .post{
+                display: flex;
+                flex-direction: column;
+                background-color: rgb(255, 255, 255);
+                padding: 10px;
+                gap: 2px;
+                 border: 1px solid black;
+                 margin: 10px;
+            }
+            .post1{
+                display: flex;
+                flex-direction: column;
+                background-color: rgb(255, 255, 255);
+                padding: 10px;
+                gap: 2px;
+                border: 1px solid black;
+                 margin: 10px;
+            }
+            /* column 2 */
+            .event{
+                display: flex;
+                flex-direction: column;
+                background-color: rgb(255, 255, 255);
+                padding: 10px;
+                gap: 2px;
+                 border: 1px solid black;
+                 
+                
+            }
+            input[type=button]{
+                display: flex;
+                padding: 10px;
+                flex: 1;
+
+            }
+            .buttons{
+                display: flex;
+                padding: 10px;
+
+            }
+            .request{
+                display: flex;
+                flex-direction: column;
+                background-color: rgb(255, 255, 255);
+                padding: 10px;
+                gap: 2px;
+               border: 1px solid black;
+                flex: 1;
+                margin: 10px;
+              
+            }
+            .ads{
+                display: flex;
+                flex-direction: column;
+                background-color: rgb(255, 255, 255);
+                padding: 30px;
+                gap: 2px;
+                margin: 10px;
+                align-items: center;
+                justify-content: center;
+                 border: 1px solid black;
+                 margin: 10px;
+
+            }
+
+
+            
+        </style>
+    </head>
+    <body>
+        <nav>
+            This is nav 
+        </nav>
+        <div class="container">
+            <div class="column1">
+                <div class="profile">Profile
+                    <div class="img1">
+                    <img  src="/photo1.png" style="border-radius: 50%;">
+                    </div>
+                    <hr>
+                    <p>Designer</p>
+                      <p> london, UK</p>
+                        <p>April 1,1989</p>
+                    </pre>
+                </div>
+                <div class="profile1"><p>My Groups</p>
+                      <p> My events</p>
+                        <p>April 1,1989</p></div>
+                <div class="intrest">intrest
+                    <div class="int">
+                    <input type="button" value="News"><input type="button" value="javascript">
+                    <input type="button" value="React">
+                    <input type="button" value="Redux">
+                    <input type="button" value="Next.js">
+                    
+                 </div>   
+                </div>
+                <div class="notification">
+                    <h2>Hey ! </h2><br> are looking at your profile . find out who ??</div>
+            </div>
+
+        
+        <div class="column2a">
+            <div class="column2a1">
+                 <div class="post">
+                    Social Media template 
+                    <input type="text">
+                    <input type="button" value="post">
+                </div>
+                <div class="post1">
+                    post 1
+                </div>
+                <!-- <div class="post2">
+                    post 2
+                </div>
+                <div class="post3">
+                    post 3
+                </div> -->
+            </div>
+            <div class="column2a2">
+                 <div class="event">Upcoming Events
+                    <img src="/northernlights.png">
+                    <p>Holiday</p>
+                    <p>friday : 15:00 </p>
+                    <input type="button" value="Info">
+                </div>
+                <div class="request">Freind Request
+                    <img src="/4.png">
+                    <div class="buttons">
+                        <input type="button" value="True"><input type="button" value="False">
+                    </div>
+                </div>
+                <div class="ads">ADS</div>
+            </div>
+        </div>
+        
+        </div>
+    </body>
+
+</html>

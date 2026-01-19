@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Activity Diagram – InvestHub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+mermaid.initialize({ startOnLoad: true });
+</script>
+</head>
+
+<body>
+
+<div class="mobile-toggle">☰ Menu</div>
+
+<div class="sidebar">
+  <h1>INVESTHUB</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="flowchart.html">Flowchart</a></li>
+    <li><a href="dfd.html">DFD</a></li>
+    <li><a href="activity.html" class="active">Activity</a></li>
+    <li><a href="sequence.html">Sequence</a></li>
+    <li><a href="uml.html">UML</a></li>
+    <li><a href="er.html">ER</a></li>
+    <li><a href="usecase.html">Use Case</a></li>
+    <li><a href="deployment.html">Deployment</a></li>
+    <li><a href="components.html">Components</a></li>
+    <li><a href="withdrawal-state.html">Withdrawals</a></li>
+    <li><a href="datadictionary.html">Data Dictionary</a></li>
+    <li><a href="api.html">API Endpoints</a></li>
+    <li><a href="glossary.html">Glossary</a></li>
+  </ul>
+</div>
+
+<div class="content">
+  <h2>Activity Diagram</h2>
+  <div class="diagram mermaid">
+flowchart TD
+    Start --> Login[Login/Register]
+    Login --> Dashboard[Dashboard]
+
+    Dashboard -->|Deposit| Razorpay[Create Razorpay Order]
+    Razorpay --> Paid{Payment Verified?}
+    Paid -- Yes --> Wallet[Update Wallet & Txn]
+    Wallet --> Notify
+    Paid -- No --> Retry[Notify Error]
+
+    Dashboard -->|Withdraw| CheckFunds
+    CheckFunds -- Insufficient --> Error[Notify User]
+    CheckFunds -- Sufficient --> LockFunds[Lock Amount]
+    LockFunds --> CreatePending[Withdrawal Pending]
+    CreatePending --> AdminReview[Admin Reviews]
+
+    AdminReview -- Approve --> Settle[Admin Finalize + Notify]
+    AdminReview -- Reject --> Refund[Refund & Notify]
+
+    Dashboard -->|View Content| Feed[Show Educational Feed]
+
+    Notify --> Dashboard
+    Retry --> Dashboard
+    Settle --> Dashboard
+    Refund --> Dashboard
+
+    Dashboard --> End
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

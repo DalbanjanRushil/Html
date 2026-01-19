@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Flowchart – InvestHub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+mermaid.initialize({ startOnLoad: true });
+</script>
+</head>
+
+<body>
+
+<div class="mobile-toggle">☰ Menu</div>
+
+<div class="sidebar">
+  <h1>INVESTHUB</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="flowchart.html" class="active">Flowchart</a></li>
+    <li><a href="dfd.html">DFD</a></li>
+    <li><a href="activity.html">Activity</a></li>
+    <li><a href="sequence.html">Sequence</a></li>
+    <li><a href="uml.html">UML</a></li>
+    <li><a href="er.html">ER</a></li>
+    <li><a href="usecase.html">Use Case</a></li>
+    <li><a href="deployment.html">Deployment</a></li>
+    <li><a href="components.html">Components</a></li>
+    <li><a href="withdrawal-state.html">Withdrawals</a></li>
+    <li><a href="datadictionary.html">Data Dictionary</a></li>
+    <li><a href="api.html">API Endpoints</a></li>
+    <li><a href="glossary.html">Glossary</a></li>
+  </ul>
+</div>
+
+<div class="content">
+  <h2>Flowchart</h2>
+  <div class="diagram mermaid">
+
+flowchart TD
+    A[User Registers/Login] --> B[Dashboard]
+    B --> C{Select Action}
+
+    C -- Deposit --> D[Create Razorpay Order]
+    D --> E{Payment Verified?}
+    E -- No --> F[Fail & Notify User]
+    E -- Yes --> G[Update Deposit + Wallet + Txn]
+    G --> H[Send Real-Time Socket Update]
+    H --> B
+
+    C -- Withdraw --> I[Check Wallet Funds]
+    I -- Insufficient --> J[Notify Error]
+    I -- Sufficient --> K[Deduct + Lock Amount]
+    K --> L[Create Withdrawal:PENDING]
+    L --> M[Notify Admin Panel]
+    M --> B
+
+    C -- View Learning --> N[Show Content Feed]
+    N --> B
+
+    Admin --> O[Review Requests]
+    O -- Approve --> P[Finalize Withdrawal + Notify]
+    O -- Reject --> Q[Refund User + Notify]
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

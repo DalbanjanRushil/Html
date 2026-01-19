@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      .main {
+        display: flex;
+        flex-direction: column;
+        margin: 0px;
+        padding: 0px;
+        background-color: rgb(255, 255, 255);
+      }
+      /* start of nav  */
+      .navsection {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media (max-width: 501px) {
+          padding: 0px 8px;
+        }
+        @media (min-width: 500px) {
+          padding: 0px 16px;
+        }
+      }
+      .left {
+        /* flex-direction: column;
+            flex: 2; */
+      }
+      .left img {
+        width: 200px;
+      }
+      .right {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        gap: 30px;
+        font-size: larger;
+        @media (max-width: 501px) {
+          align-items: center;
+          justify-content: end;
+          margin: 20px;
+        }
+      }
+      .home:hover,
+      .product:hover,
+      .faq:hover,
+      .contact:hover {
+        color: #fa4a0c;
+      }
+      .right img {
+        width: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: end;
+        @media (min-width: 501px) {
+          display: none;
+        }
+      }
+      /* End of nav */
+      /* start of hero image  */
+      .hero , .back {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        position: relative;
+        height: calc(100vh - 103.02px);
+        @media (min-width: 500px) and (max-width: 992px) {
+          height: calc(100vh - 103.03px);
+        }
+      }
+      .back img {
+        width: 100%;
+
+        height: 100%;
+      }
+      
+      
+      .textofhero {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        gap: 24px;
+      }
+      .t1 {
+        font-size: h1;
+        color: white;
+        text-align: center;
+        padding: 0px 10px 0px 10px;
+      }
+      .t2 {
+        text-align: center;
+        font-family: "Times New Roman", Times, serif;
+        font-size: xx-large;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        
+        margin: 0px;
+        padding: 0px 10px 0px 10px;
+         @media (min-width: 500px) and (max-width: 992px) {
+          font-size: large;
+           max-width: 65%;
+        }
+        @media(min-width:992px){
+         max-width: 41%;
+        }
+       
+
+      }
+
+      .t3 {
+        font-family: "Times New Roman", Times, serif;
+        font-size: large;
+        font-style: bold;
+        color: white;
+        text-align: center;
+        padding: 0px 10px 0px 10px;
+      }
+
+      .buttonofhero {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+      }
+      .playstore {
+        display: flex;
+        flex-direction: column;
+        background-color: #fa4a0c;
+        color: white;
+        padding: 10px 30px;
+        border-radius: 20px;
+        font-size: larger;
+      }
+      .appstore {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid white;
+        color: white;
+        padding: 10px 30px;
+        border-radius: 20px;
+        font-size: larger;
+      }
+      h1 {
+        margin: 0px;
+      }
+      h2 {
+        margin: 0px;
+      }
+      h3 {
+        margin: 0px;
+      }
+      h4 {
+        margin: 0px;
+      }
+
+      /* phone at center */
+      /* section remaining to be created  */
+
+      /* section 2  */
+      .section2,
+      .section4 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .sec2,
+      .sec4 {
+        display: flex;
+        flex-direction: row;
+        padding: 0% 15%;
+      }
+      .s2c1,
+      .s4c1 {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+      }
+      .s2c1 img,
+      .s4c1 img {
+        width: 648px;
+        max-width: 100%;
+      }
+      .s2c2,
+      .s4c2 {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        align-items: left;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .s2t1,
+      .s4t1 {
+        color: #fa4a0c;
+        font-size: 24px;
+      }
+      .s2t2,
+      .s4t2 {
+        font-size: 35px;
+      }
+      .s2t3,
+      .s4t3 {
+        color: lightslategrey;
+        font-size: 24px;
+      }
+
+      /* Section 3 */
+      .section3 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .sec3 {
+        display: flex;
+        flex-direction: row;
+        padding: 0% 15%;
+      }
+      .s3c1 {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        align-items: left;
+        justify-content: center;
+        gap: 10px;
+      }
+      .s3c2 {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+      }
+      .s3c2 img {
+        width: 648px;
+        max-width: 100%;
+      }
+      .s3t1 {
+        color: #fa4a0c;
+        font-size: 24px;
+      }
+      .s3t2 {
+        font-size: 35px;
+      }
+      .s3t3 {
+        color: lightslategrey;
+        font-size: 24px;
+      }
+      /*section 6 */
+      .section6 {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        position: relative;
+        height: calc(100vh - 103.02px);
+         @media (max-width: 500px) {
+          background-color: rgb(0, 0, 66);
+          height: calc(100vh - 73.51px);
+         }
+        @media (min-width: 500px) and (max-width: 992px) {
+          height: calc(100vh - 78.26px);
+        }
+      }
+      .section6 img {
+        width: 100%;
+
+        height: 100%;
+         @media (max-width: 500px) {
+          display: none;
+          
+         }
+      }
+      .textofsection6 {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        gap: 24px;
+         
+       
+      }
+      .s6t2 {
+         text-align: center;
+        font-family: "Times New Roman", Times, serif;
+        font-size: xx-large;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        max-width: 41%;
+        margin: 0px;
+        padding: 0px 10px 0px 10px;
+      }
+      .s6t3{
+        font-family: "Times New Roman", Times, serif;
+        font-size: large;
+        font-style: bold;
+        color: white;
+        text-align: center;
+        padding: 0px 10px 0px 10px;
+      }
+      
+      
+
+      /* footer */
+.footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 60px;
+        @media(max-width:500px){
+          flex-direction: column;
+          flex: 1;
+        }
+        
+      
+      }
+      .left {
+        /* flex-direction: column;
+            flex: 2; */
+            @media(max-width:500px){
+              display: none;
+            }
+      }
+      .left img {
+        width: 200px;
+      }
+      .right {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        gap: 30px;
+        font-size: larger;
+       
+        
+      }
+      .logos img {
+       
+        
+       
+        width: 40px;
+        @media (max-width :500px){
+          width: 20px;
+        }
+        @media (min-width: 500px) and (max-width: 992px) {
+          width: 30px;
+        }
+      }
+      /* .jugad */
+      .jugad{
+        position: relative;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: end;
+        color: rgb(50, 50, 50);
+       
+      }
+      .jugad h1{
+        position: absolute;
+        bottom: 15%;
+        align-items: center;
+        border-top: 3px solid lightgrey;
+        font-weight: 600;
+        font-size: 44px;
+      }
+      .centerphone{
+        position: absolute;
+       top: 80%;
+       
+        max-width: 748px;
+        max-height: 600px;
+        
+        
+            
+
+        
+      }
+      .centerphone img{
+          max-width: 748px;
+          max-height: 748px;
+          width: 100%;
+          height: 100%;
+           @media (min-width: 500px) and (max-width: 992px) {
+          top: 80%;
+          max-width: 400px;
+          max-height: 548px;
+         }
+         @media(max-width : 500px){
+          max-width: 500px;
+          max-height: 450px;
+        }
+        @media(min-width : 992px){
+          max-width: 748px;
+          max-height: 748px;
+        }
+      }
+      .center{
+        display: flex;
+        
+        align-items:center ;
+        justify-content: center;
+      }
+      
+      .end{
+        @media(max-width:500px){
+              display: none;
+            }
+             @media (min-width: 500px) and (max-width: 992px) {
+              font-size: medium;
+             }
+              @media (min-width: 992px) {
+                font-size: larger;
+              }
+             
+             
+           
+      }
+     
+
+      /* Media queries */
+      @media (max-width: 500px) {
+        .home,
+        .product,
+        .faq,
+        .contact {
+          display: none;
+        }
+        .left img {
+          width: 75px;
+        }
+        .back img {
+          display: none;
+        }
+        .t1,
+        .t3 {
+          color: grey;
+        }
+        .t2 {
+          color: black;
+          max-width: 100%;
+          font-size: medium;
+        }
+        .buttonofhero {
+          flex-direction: column;
+        }
+        .appstore {
+          border: #fa4a0c 1px solid;
+          color: #fa4a0c;
+        }
+        .hero {
+          height: calc(100vh - 56px);
+        }
+        .jugad h1{
+          font-size: x-large;
+        }
+        .s2t1 ,.s2t2 ,.s2t3{
+          font-size: medium;
+        }
+        .s3t1 ,.s3t2 ,.s3t3{
+          font-size: medium;
+        }
+        .s4t1 ,.s4t2 ,.s4t3{
+          font-size: medium;
+        }
+        .section2{
+          display: flex;
+          
+        }
+        .sec2 , .sec3 ,.sec4{
+         
+          flex-direction: column;
+        }
+        .s2c1 , .s4c1{ 
+          order: 1;
+        }
+        .s2c2 , .s3c1 , .s4c2{
+          align-items: center;
+        }
+        .centerphone{
+         top: 100%;
+          width: 100%;
+          height: 100%;
+       
+        
+      }
+      @media (min-width: 500px) and (max-width: 992px) {
+        .left img {
+          width: 120px;
+        }
+        .t2 {
+          max-width: 80%;
+          font-size: large;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .home,
+        .product,
+        .faq,
+        .contact {
+          font-size: larger;
+          gap: 32px;
+        }
+        .t2 {
+          max-width: 60%;
+          
+        }
+        .centerphone{
+        width: 100%;
+        height: 100%;
+        }
+
+        .s2t1 ,.s2t2 ,.s2t3{
+          font-size: large;
+        }
+        .s3t1 ,.s3t2 ,.s3t3{
+          font-size: large;
+        }
+        .s4t1 ,.s4t2 ,.s4t3{
+          font-size: large;
+        }
+        .section2{
+          display: flex;
+          
+        }
+        
+        
+        .s2c2 , .s3c1 , .s4c2{
+          align-items: center;
+        }
+      }
+    }
+  
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="navsection">
+        <div class="left">
+          <img src="/hotellogo.png" />
+        </div>
+        <div class="right">
+          <div class="home">Home</div>
+          <div class="product">Product</div>
+          <div class="faq">Faq</div>
+          <div class="contact">Contact</div>
+          <img src="/option-image.png" />
+        </div>
+      </div>
+
+      <div class="hero">
+        <div class="back">
+        <img src="/h11.png" />
+        </div>
+        <div class="textofhero">
+          <div class="t1"><h3>Food app</h3></div>
+          <div class="t2">
+            <h1>Why stay hungry when you can order from Bella Onojie</h1>
+          </div>
+
+          <div class="t3">
+            <h4>Download the bella onojoe's food app now on</h4>
+          </div>
+          <div class="buttonofhero">
+            <div class="playstore">Playstore</div>
+            <div class="appstore">App Store</div>
+          </div>
+        </div>
+       <div class="centerphone">
+       <img src="/centerphone.png">
+        </div>
+        
+      </div>
+ <div class="jugad">
+        <h1>How the app Works</h1>
+        </div>
+
+       
+      <div class="section2">
+        <div class="sec2">
+          <div class="s2c1">
+            <img src="/section2.png" />
+          </div>
+          <div class="s2c2">
+            <div class="s2t1"><h3>Create an account</h3></div>
+            <div class="s2t2">
+              <h2>Create/Login to an existing account to get started</h2>
+            </div>
+            <div class="s2t3">
+              <h3>
+                An Account is created with your email and a desired password
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section3">
+        <div class="sec3">
+          <div class="s3c1">
+            <div class="s3t1"><h3>Explore varieties</h3></div>
+            <div class="s3t2">
+              <h2>Shop for your favorites meals as e dey hot .</h2>
+            </div>
+            <div class="s3t3">
+              <h3>
+                Shop for your favorite meals or drinks and enjoy while doing it.
+              </h3>
+            </div>
+          </div>
+          <div class="s3c2">
+            <img src="/section3.png" />
+          </div>
+        </div>
+      </div>
+      <div class="section4">
+        <div class="sec4">
+          <div class="s4c1">
+            <img src="/section4.png" />
+          </div>
+          <div class="s4c2">
+            <div class="s4t1"><h3>Checkout</h3></div>
+            <div class="s4t2">
+              <h2>When you done check out and get it delivered</h2>
+            </div>
+            <div class="s4t3">
+              <h3>When you done check out and get it delivered with ease</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+
+      <div class="section6">
+        <img src="/section5.png" />
+        <div class="textofsection6">
+          <div class="s6t2">
+            <h2>Download the app now.</h2>
+          </div>
+
+          <div class="s6t3">
+            <h3>Available on your store.Start your premium experience now</h3>
+          </div>
+          <div class="buttonofhero">
+            <div class="playstore">Playstore</div>
+            <div class="appstore">App Store</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+
+        <div class="left">
+          <img src="/hotellogo.png" />
+        </div>
+        <div class="center">
+          
+          <div class="logos">
+            <img src="/twitt1.png">
+            <img src="/face.png">
+            <img src="/insta.png">
+          </div>
+          
+        </div>
+        <div class="end">
+        copywritebyonjiebella 
+        </div>
+
+      </div>
+    </div>
+     
+  </body>
+</html>
+      

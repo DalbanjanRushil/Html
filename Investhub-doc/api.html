@@ -1,0 +1,68 @@
+\<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>API Endpoints – InvestHub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="mobile-toggle">☰ Menu</div>
+
+<div class="sidebar">
+  <h1>INVESTHUB</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="flowchart.html">Flowchart</a></li>
+    <li><a href="dfd.html">DFD</a></li>
+    <li><a href="activity.html">Activity</a></li>
+    <li><a href="sequence.html">Sequence</a></li>
+    <li><a href="uml.html">UML</a></li>
+    <li><a href="er.html">ER</a></li>
+    <li><a href="usecase.html">Use Case</a></li>
+    <li><a href="deployment.html">Deployment</a></li>
+    <li><a href="components.html">Components</a></li>
+    <li><a href="withdrawal-state.html">Withdrawals</a></li>
+    <li><a href="datadictionary.html">Data Dictionary</a></li>
+    <li><a href="api.html" class="active">API Endpoints</a></li>
+    <li><a href="glossary.html">Glossary</a></li>
+  </ul>
+</div>
+
+<div class="content">
+  <h2>API Endpoints</h2>
+
+  <h3>Authentication</h3>
+  <ul>
+    <li><b>POST /api/auth/register</b> – Create account</li>
+    <li><b>POST /api/auth/login</b> – Login</li>
+  </ul>
+
+  <h3>User Financial</h3>
+  <ul>
+    <li><b>POST /api/finance/deposit/create</b> – Create Razorpay order</li>
+    <li><b>POST /api/finance/deposit/verify</b> – Validate payment</li>
+    <li><b>POST /api/finance/withdraw</b> – Request withdrawal</li>
+    <li><b>GET /api/finance/transactions</b> – Fetch user txns</li>
+  </ul>
+
+  <h3>Admin Actions</h3>
+  <ul>
+    <li><b>GET /api/admin/withdrawals</b> – Pending list</li>
+    <li><b>POST /api/admin/withdraw/manage</b> – Approve/Reject</li>
+    <li><b>POST /api/admin/profit</b> – Distribute profit</li>
+    <li><b>POST /api/admin/content</b> – Upload learning</li>
+  </ul>
+
+  <h3>Internal Core</h3>
+  <ul>
+    <li><b>POST /api/internal/socket</b> – Broadcast updates</li>
+    <li><b>POST /api/internal/email</b> – Send E-mail</li>
+  </ul>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

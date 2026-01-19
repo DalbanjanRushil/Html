@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Data Dictionary – InvestHub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="mobile-toggle">☰ Menu</div>
+
+<div class="sidebar">
+  <h1>INVESTHUB</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="flowchart.html">Flowchart</a></li>
+    <li><a href="dfd.html">DFD</a></li>
+    <li><a href="activity.html">Activity</a></li>
+    <li><a href="sequence.html">Sequence</a></li>
+    <li><a href="uml.html">UML</a></li>
+    <li><a href="er.html">ER</a></li>
+    <li><a href="usecase.html">Use Case</a></li>
+    <li><a href="deployment.html">Deployment</a></li>
+    <li><a href="components.html">Components</a></li>
+    <li><a href="withdrawal-state.html">Withdrawals</a></li>
+    <li><a href="datadictionary.html" class="active">Data Dictionary</a></li>
+    <li><a href="api.html">API Endpoints</a></li>
+    <li><a href="glossary.html">Glossary</a></li>
+  </ul>
+</div>
+
+<div class="content">
+  <h2>Data Dictionary</h2>
+
+  <p>The following tables explain every key field in the database:</p>
+
+  <h3>Users</h3>
+  <ul>
+    <li><b>name</b>: Full display name</li>
+    <li><b>email</b>: Unique login identifier</li>
+    <li><b>password</b>: Stored encrypted hash</li>
+    <li><b>role</b>: USER / ADMIN</li>
+    <li><b>status</b>: ACTIVE / BLOCKED</li>
+    <li><b>payoutPreference</b>: COMPOUND or PAYOUT</li>
+    <li><b>referralCode</b>: Generated unique code</li>
+  </ul>
+
+  <h3>Wallet</h3>
+  <ul>
+    <li><b>balance</b>: Principal + compounded growth</li>
+    <li><b>payoutWalletBalance</b>: Withdrawable profit</li>
+    <li><b>totalDeposited</b>: Lifetime sum of deposits</li>
+    <li><b>totalWithdrawn</b>: Lifetime sum of withdrawals</li>
+    <li><b>totalProfit</b>: Lifetime earned profits</li>
+  </ul>
+
+  <h3>Transactions</h3>
+  <ul>
+    <li><b>type</b>: DEPOSIT, WITHDRAWAL, PROFIT</li>
+    <li><b>status</b>: PENDING, SUCCESS, FAILED</li>
+    <li><b>referenceId</b>: Points to related record</li>
+    <li><b>description</b>: Optional narrative</li>
+  </ul>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

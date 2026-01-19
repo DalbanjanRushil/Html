@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Deployment – InvestHub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+mermaid.initialize({ startOnLoad: true });
+</script>
+</head>
+
+<body>
+
+<div class="mobile-toggle">☰ Menu</div>
+
+<div class="sidebar">
+  <h1>INVESTHUB</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="flowchart.html">Flowchart</a></li>
+    <li><a href="dfd.html">DFD</a></li>
+    <li><a href="activity.html">Activity</a></li>
+    <li><a href="sequence.html">Sequence</a></li>
+    <li><a href="uml.html">UML</a></li>
+    <li><a href="er.html">ER</a></li>
+    <li><a href="usecase.html">Use Case</a></li>
+    <li><a href="deployment.html" class="active">Deployment</a></li>
+    <li><a href="components.html">Components</a></li>
+    <li><a href="withdrawal-state.html">Withdrawals</a></li>
+    <li><a href="datadictionary.html">Data Dictionary</a></li>
+    <li><a href="api.html">API Endpoints</a></li>
+    <li><a href="glossary.html">Glossary</a></li>
+  </ul>
+</div>
+
+<div class="content">
+  <h2>Deployment Architecture</h2>
+  <div class="diagram mermaid">
+
+flowchart TD
+    Browser[Client Browser<br>Next.js UI] --> API[Next.js API Routes]
+    AdminBrowser[Admin Panel] --> API
+
+    API --> MongoDB[(MongoDB Atlas)]
+    API --> Razorpay[(Razorpay Gateway)]
+    API --> SMTP[(Nodemailer SMTP)]
+    API --> Socket[(Socket Push Service)]
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
