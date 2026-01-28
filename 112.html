@@ -1,0 +1,1544 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvestHub – System Documentation</title>
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --text-color: #343a40;
+            --card-bg: #ffffff;
+            --border-color: #dee2e6;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 3px solid var(--primary-color);
+            padding: 20px 0;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        h2, h3 {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px;
+            margin-top: 30px;
+            color: var(--text-color);
+        }
+
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; }
+
+        /* Table of Contents Styling */
+        nav {
+            position: sticky;
+            top: 20px;
+            float: left;
+            width: 250px;
+            padding: 15px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+            font-size: 0.9rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            display: block;
+            padding: 5px 0;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .content {
+            margin-left: 270px;
+        }
+
+        /* Feature Boxes */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-box h3 {
+            margin-top: 0;
+            border-bottom: none;
+            color: var(--primary-color);
+        }
+
+        /* Tables and Data Dictionary */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: var(--card-bg);
+        }
+
+        table th, table td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Mermaid Diagram Container */
+        .mermaid {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            text-align: center;
+        }
+
+        /* API Endpoints Styling */
+        .api-endpoint {
+            background-color: #e9ecef;
+            border-left: 4px solid var(--secondary-color);
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .api-endpoint strong {
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+
+        /* Clearfix for float */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+    </style>
+  <meta charset="UTF-8">
+  <title>InvestHub Docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+/* ---------- RESET & GLOBAL ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  display: flex;
+  height: 100vh;
+  background: #f8fafc;
+  color: #111827;
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar {
+  width: 250px;
+  background: #1e293b;
+  color: #fff;
+  padding: 20px 15px;
+  border-right: 1px solid #0f172a;
+  display: flex;
+  flex-direction: column;
+  transition: transform .3s ease-in-out;
+  overflow-y: auto;
+}
+
+.sidebar h1 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sidebar ul { list-style: none; }
+
+.sidebar a {
+  display: block;
+  padding: 12px 14px;
+  color: #cbd5e1;
+  font-size: 15px;
+  text-decoration: none;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  transition: background .25s, padding-left .2s;
+}
+
+.sidebar a:hover { background: #334155; padding-left: 18px; color: white; }
+.sidebar a.active { background: #475569; font-weight: 500; color: white; }
+.sidebar a:focus-visible { outline: 2px solid #60a5fa; outline-offset: 2px; }
+
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  z-index: 1400;
+}
+
+/* ---------- CONTENT ---------- */
+.content {
+  flex: 1;
+  padding: 34px;
+  background: #ffffff;
+  overflow-y: auto;
+}
+
+.content h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.content h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+
+.content p {
+  margin-top: 10px;
+  color: #334155;
+}
+
+.content ul {
+  padding-left: 18px;
+  margin-top: 10px;
+}
+
+.content li {
+  margin: 6px 0;
+  color: #334155;
+}
+
+b, strong { font-weight: 600; }
+
+.section {
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid #e2e8f0;
+  scroll-margin-top: 90px;
+}
+
+/* ---------- DIAGRAMS ---------- */
+.diagram {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 12px;
+  border: 1px solid #cbd5e1;
+  min-height: 450px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+  overflow: auto;
+}
+
+.diagram svg { background: #ffffff !important; }
+
+/* ---------- ALWAYS VISIBLE MOBILE BUTTON ---------- */
+.mobile-toggle {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 2000;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: #1e293b;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  cursor: pointer;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  font: inherit;
+}
+
+.mobile-toggle.hidden { display: none !important; }
+
+/* ---------- SCROLLBAR ---------- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+::-webkit-scrollbar-track { background: #e2e8f0; }
+
+/* ---------- RESPONSIVE BREAKPOINT ---------- */
+@media(max-width: 1024px) {
+  body { flex-direction: column; }
+
+  .mobile-toggle { display: block; }
+
+  .sidebar {
+    position: fixed;
+    height: 100vh;
+    transform: translateX(-110%);
+    top: 0;
+    left: 0;
+    z-index: 1500;
+  }
+
+  .sidebar.open { transform: translateX(0); }
+
+  .sidebar-backdrop.open { display: block; }
+
+  .content { padding: 70px 18px 18px 18px; }
+  .diagram { min-height: 60vh; }
+}
+/* ---------- HOME PAGE STYLING ---------- */
+
+.hero {
+  background: #e2e8f0;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid #334155;
+}
+
+.hero h2 {
+  font-size: 26px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.hero p {
+  color: #334155;
+  line-height: 1.5;
+}
+
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 18px;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.card ul li {
+  line-height: 1.5;
+}
+
+.quicklinks h3 {
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.quick-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.quick-buttons a {
+  background: #334155;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background .25s;
+}
+
+.quick-buttons a:hover {
+  background: #1e293b;
+  cursor: pointer;
+}
+
+/* Mobile tweak */
+@media(max-width: 600px){
+  .hero h2 { font-size: 22px; }
+}
+
+/* ---------- PROGRESS PAGE ---------- */
+.progress-entry {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 18px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.progress-entry h3 {
+  margin-bottom: 6px;
+  color: #1e293b;
+}
+
+.progress-imgs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.progress-imgs img {
+  width: 240px;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  object-fit: cover;
+  transition: transform .2s;
+}
+
+.progress-imgs img:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}
+  </style>
+
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({ startOnLoad: true });</script>
+
+    <header>
+        <h1>InvestHub – System Documentation</h1>
+        <p style="text-align: center; color: var(--secondary-color); margin-top: 5px;">A fully simulated investment and finance learning platform with deposits, withdrawals, admin actions, real-time updates, and automated profit allocation.</p>
+    </header>
+
+    <div class="container clearfix">
+        <nav>
+            <h3 style="margin-top: 0; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; color: var(--text-color);">Table of Contents</h3>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features Overview</a></li>
+                <li><a href="#core">System Core</a></li>
+                <li><a href="#flowchart">Flowchart</a></li>
+                <li><a href="#dfd">Data Flow Diagrams (DFD)</a></li>
+                <li><a href="#activity">Activity Diagram</a></li>
+                <li><a href="#sequence">Sequence Diagrams</a></li>
+                <li><a href="#uml">UML Class Diagram</a></li>
+                <li><a href="#er">Entity Relationship Diagram (ER)</a></li>
+                <li><a href="#usecase">Use Case Diagram</a></li>
+                <li><a href="#deployment">Deployment Architecture</a></li>
+                <li><a href="#components">Component Diagram</a></li>
+                <li><a href="#withdrawals">Withdrawal State Machine</a></li>
+                <li><a href="#datadictionary">Data Dictionary</a></li>
+                <li><a href="#api">API Endpoints</a></li>
+                <li><a href="#glossary">Glossary</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+
+            <section id="home">
+                <h2>System Overview</h2>
+                <p>InvestHub is designed as a learning platform providing users with a simulated environment for financial and investment education. It handles secure user authentication, deposits (via Razorpay), withdrawals (requiring Admin approval), real-time balance updates, and an automated system for allocating investment profits.</p>
+            </section>
+
+            <section id="features">
+                <h2>Features Overview</h2>
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <h3>User Features</h3>
+                        <ul>
+                            <li>Deposit funds (Razorpay)</li>
+                            <li>Track balance & transactions</li>
+                            <li>Request withdrawals</li>
+                            <li>Choose compound/payout mode</li>
+                            <li>Access learning content</li>
+                        </ul>
+                    </div>
+                    <div class="feature-box">
+                        <h3>Admin Features</h3>
+                        <ul>
+                            <li>Approve/Reject withdrawals</li>
+                            <li>Distribute profits</li>
+                            <li>View platform performance</li>
+                            <li>Upload content</li>
+                            <li>Block or manage users</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="core">
+                <h2>System Core</h2>
+                <ul>
+                    <li>Secure authentication</li>
+                    <li>Atomic database transactions</li>
+                    <li>Real-time socket updates</li>
+                    <li>Email notifications</li>
+                    <li>Full audit transaction logs</li>
+                </ul>
+            </section>
+
+            <section id="flowchart">
+                <h2>Flowchart (High-Level Process)</h2>
+                <div class="mermaid">
+                    flowchart TD
+                    A[User Registers/Login] --> B[Dashboard]
+                    B --> C{Select Action}
+                    C -- Deposit --> D[Create Razorpay Order]
+                    D --> E{Payment Verified?}
+                    E -- No --> F[Fail & Notify User]
+                    E -- Yes --> G[Update Deposit + Wallet + Txn]
+                    G --> H[Send Real-Time Socket Update]
+                    H --> B
+
+                    C -- Withdraw --> I[Check Wallet Funds]
+                    I -- Insufficient --> J[Notify Error]
+                    I -- Sufficient --> K[Deduct + Lock Amount]
+                    K --> L[Create Withdrawal:PENDING]
+                    L --> M[Notify Admin Panel]
+                    M --> B
+
+                    C -- View Learning --> N[Show Content Feed]
+                    N --> B
+
+                    Admin --> O[Review Requests]
+                    O -- Approve --> P[Finalize Withdrawal + Notify]
+                    O -- Reject --> Q[Refund User + Notify]
+                </div>
+            </section>
+
+            <section id="dfd">
+                <h2>Data Flow Diagrams (DFD)</h2>
+                
+                <h3>DFD Level 0</h3>
+                <div class="mermaid">
+                    flowchart LR
+                    User <--> System
+                    Admin <--> System
+                </div>
+
+                <h3>DFD Level 1</h3>
+                <div class="mermaid">
+                    flowchart LR
+                    User -->|Register/Login| Auth
+                    User -->|Deposit/Withdraw/Content| Finance
+                    Admin -->|Approval/Profit| AdminPanel
+
+                    Auth --> UsersDB[(Users)]
+                    Finance --> WalletDB[(Wallets)]
+                    Finance --> TxDB[(Transactions)]
+                    Finance --> DepDB[(Deposits)]
+                    Finance --> WdDB[(Withdrawals)]
+
+                    AdminPanel --> ProfitDB[(ProfitDistributions)]
+                    AdminPanel --> ContentDB[(Content Feed)]
+                    AdminPanel --> NotifyDB[(Notifications)]
+
+                    Finance --> User
+                    AdminPanel --> Admin
+                </div>
+            </section>
+
+            <section id="activity">
+                <h2>Activity Diagram</h2>
+                <div class="mermaid">
+                    flowchart TD
+                    Start --> Login[Login/Register]
+                    Login --> Dashboard[Dashboard]
+
+                    Dashboard -->|Deposit| Razorpay[Create Razorpay Order]
+                    Razorpay --> Paid{Payment Verified?}
+                    Paid -- Yes --> Wallet[Update Wallet & Txn]
+                    Wallet --> Notify[Send Notification & Update]
+                    Paid -- No --> Retry[Notify Error]
+
+                    Dashboard -->|Withdraw| CheckFunds[Check Wallet Funds]
+                    CheckFunds -- Insufficient --> Error[Notify User]
+                    CheckFunds -- Sufficient --> LockFunds[Deduct & Lock Amount]
+                    LockFunds --> CreatePending[Create Withdrawal Pending Record]
+                    CreatePending --> AdminReview[Admin Reviews Request]
+
+                    AdminReview -- Approve --> Settle[Admin Finalize + Notify User]
+                    AdminReview -- Reject --> Refund[Refund Locked Amount & Notify]
+
+                    Dashboard -->|View Content| Feed[Show Educational Feed]
+
+                    Notify --> Dashboard
+                    Retry --> Dashboard
+                    Settle --> Dashboard
+                    Refund --> Dashboard
+                    Dashboard --> End
+                </div>
+            </section>
+
+            <section id="sequence">
+                <h2>Sequence Diagrams</h2>
+
+                <h3>Deposit Sequence</h3>
+                <div class="mermaid">
+                    sequenceDiagram
+                    User->>Frontend: Input Amount & Click Deposit
+                    Frontend->>Backend: Create Razorpay Order
+                    Backend->>Razorpay: Generate Order
+                    Razorpay->>Frontend: Checkout UI
+                    User->>Razorpay: Pay
+                    Razorpay->>Backend: Webhook Callback
+                    Backend->>DB: Update Deposit + Wallet + Txn
+                    Backend->>Socket: Emit Live Update
+                    Backend->>Email: Send Confirmation
+                    Backend->>User: Success Response
+                </div>
+
+                <h3>Withdrawal Sequence</h3>
+                <div class="mermaid">
+                    sequenceDiagram
+                    User->>Frontend: Request Withdrawal
+                    Frontend->>Backend: Send Amount
+                    Backend->>DB: Fetch Wallet
+                    Backend->>Backend: Validate & Lock Balance
+                    Backend->>DB: Create Withdrawal Pending
+                    Backend->>Socket: Notify Admin
+
+                    Admin->>Backend: Approve/Reject
+                    Backend->>DB: Update Withdrawal
+                    alt Reject
+                        Backend->>DB: Refund Wallet
+                    end
+                    Backend->>Email: Send Notification
+                    Backend->>Socket: Notify User Update
+                </div>
+            </section>
+
+            <section id="uml">
+                <h2>UML Class Diagram</h2>
+                <div class="mermaid">
+                    classDiagram
+                    class User {
+                        _id
+                        name
+                        email
+                        password
+                        role
+                        status
+                        payoutPreference
+                        referralCode
+                        createdAt
+                    }
+                    class Wallet {
+                        userId
+                        balance
+                        payoutWalletBalance
+                        totalDeposited
+                        totalWithdrawn
+                        totalProfit
+                    }
+                    class Transaction {
+                        userId
+                        type
+                        amount
+                        status
+                        referenceId
+                        description
+                        createdAt
+                    }
+                    class Deposit {
+                        userId
+                        amount
+                        razorpayOrderId
+                        razorpayPaymentId
+                        razorpaySignature
+                        status
+                    }
+                    class Withdrawal {
+                        userId
+                        amount
+                        status
+                        adminRemark
+                        processedAt
+                    }
+                    class ProfitDistribution {
+                        totalProfit
+                        adminShare
+                        userShare
+                        distributedToUserCount
+                        distributionDate
+                    }
+                    class Content {
+                        type
+                        title
+                        url
+                        uploadedBy
+                        isPublic
+                    }
+                    class Notification {
+                        userId
+                        title
+                        message
+                        isRead
+                    }
+
+                    User --|> Wallet
+                    User --|> Transaction
+                    User --|> Deposit
+                    User --|> Withdrawal
+                    User --|> Notification
+                    Admin --|> ProfitDistribution
+                </div>
+            </section>
+
+            <section id="er">
+                <h2>Entity Relationship Diagram (ER)</h2>
+                <div class="mermaid">
+                    erDiagram
+                    USER ||--o{ WALLET : owns
+                    USER ||--o{ TRANSACTION : makes
+                    USER ||--o{ DEPOSIT : initiates
+                    USER ||--o{ WITHDRAWAL : requests
+                    USER ||--o{ NOTIFICATION : receives
+                    USER ||--o{ CONTENT : views
+
+                    PROFITDISTRIBUTION ||--o{ TRANSACTION : logs
+
+                    USER {
+                        string _id PK
+                        string name
+                        string email
+                    }
+                    WALLET {
+                        number balance
+                        number payoutWalletBalance
+                        string userId FK
+                    }
+                    TRANSACTION {
+                        string type
+                        number amount
+                        string userId FK
+                    }
+                </div>
+            </section>
+
+            <section id="usecase">
+                <h2>Use Case Diagram</h2>
+                <div class="mermaid">
+                    flowchart LR
+                    User([User]) --- UC1[Register / Login]
+                    User --- UC2[Deposit Funds]
+                    User --- UC3[Request Withdrawal]
+                    User --- UC4[View Dashboard]
+                    User --- UC5[Set Compound/Payout]
+                    User --- UC6[View Learning Content]
+
+                    Admin([Admin]) --- UC7[Approve/Reject Withdrawals]
+                    Admin --- UC8[Distribute Profit]
+                    Admin --- UC9[Upload Learning Content]
+                    Admin --- UC10[Manage Users]
+
+                    System([InvestHub System]) --- UC11[Verify Payments]
+                    System --- UC12[Send Emails & Notifications]
+                    System --- UC13[Push Real-Time Updates]
+                </div>
+            </section>
+
+            <section id="deployment">
+                <h2>Deployment Architecture</h2>
+                <div class="mermaid">
+                    flowchart TD
+                    Browser[Client Browser 
+                    Next.js UI] --> API[Next.js API Routes]
+                    AdminBrowser[Admin Panel] --> API
+
+                    API --> MongoDB[(MongoDB Atlas)]
+                    API --> Razorpay[(Razorpay Gateway)]
+                    API --> SMTP[(Nodemailer SMTP)]
+                    API --> Socket[(Socket Push Service)]
+                </div>
+            </section>
+
+            <section id="components">
+                <h2>Component Diagram</h2>
+                <div class="mermaid">
+                    flowchart LR
+                    UI[Next.js UI]
+                    AUTH[NextAuth Auth]
+                    FINANCE[Finance Engine]
+                    ADMIN[Admin System]
+                    SOCKET[Socket Notifier]
+                    EMAIL[Nodemailer Service]
+                    DB[(MongoDB)]
+
+                    UI --> AUTH
+                    UI --> FINANCE
+                    UI --> ADMIN
+
+                    AUTH --> DB
+                    FINANCE --> DB
+                    ADMIN --> DB
+
+                    FINANCE --> SOCKET
+                    ADMIN --> SOCKET
+                    FINANCE --> EMAIL
+                    ADMIN --> EMAIL
+                </div>
+            </section>
+
+            <section id="withdrawals">
+                <h2>Withdrawal State Machine</h2>
+                <div class="mermaid">
+                    stateDiagram-v2
+                    [*] --> Initiated
+                    Initiated --> Pending: Lock Balance
+                    Pending --> Approved: Admin Approves
+                    Pending --> Rejected: Admin Rejects
+                    Approved --> Settled: Payout Completes
+                    Rejected --> Refunded: Money Returned
+                    Settled --> [*]
+                    Refunded --> [*]
+                </div>
+            </section>
+
+            <section id="datadictionary">
+                <h2>Data Dictionary</h2>
+                <p>The following tables explain every key field in the database collections.</p>
+
+                <h3>Users Collection</h3>
+                <table>
+                    <thead>
+                        <tr><th>Field Name</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>_id</code></td><td>Unique document identifier (Primary Key)</td></tr>
+                        <tr><td><code>name</code></td><td>Full display name</td></tr>
+                        <tr><td><code>email</code></td><td>Unique login identifier</td></tr>
+                        <tr><td><code>password</code></td><td>Stored encrypted hash</td></tr>
+                        <tr><td><code>role</code></td><td>USER / ADMIN</td></tr>
+                        <tr><td><code>status</code></td><td>ACTIVE / BLOCKED</td></tr>
+                        <tr><td><code>payoutPreference</code></td><td>COMPOUND or PAYOUT (determines how profits are allocated)</td></tr>
+                        <tr><td><code>referralCode</code></td><td>Generated unique code</td></tr>
+                        <tr><td><code>createdAt</code></td><td>Timestamp of account creation</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>Wallet Collection</h3>
+                <table>
+                    <thead>
+                        <tr><th>Field Name</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>userId</code></td><td>Foreign Key linking to the User</td></tr>
+                        <tr><td><code>balance</code></td><td>Principal + compounded growth (Total Invested Value)</td></tr>
+                        <tr><td><code>payoutWalletBalance</code></td><td>Withdrawable profit reserve</td></tr>
+                        <tr><td><code>totalDeposited</code></td><td>Lifetime sum of deposits</td></tr>
+                        <tr><td><code>totalWithdrawn</code></td><td>Lifetime sum of withdrawals</td></tr>
+                        <tr><td><code>totalProfit</code></td><td>Lifetime earned profits</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>Transactions Collection</h3>
+                <table>
+                    <thead>
+                        <tr><th>Field Name</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>userId</code></td><td>Foreign Key linking to the User</td></tr>
+                        <tr><td><code>type</code></td><td>DEPOSIT, WITHDRAWAL, PROFIT</td></tr>
+                        <tr><td><code>amount</code></td><td>Value of the transaction</td></tr>
+                        <tr><td><code>status</code></td><td>PENDING, SUCCESS, FAILED</td></tr>
+                        <tr><td><code>referenceId</code></td><td>Points to related record (Deposit, Withdrawal, or ProfitDistribution)</td></tr>
+                        <tr><td><code>description</code></td><td>Optional narrative for the transaction</td></tr>
+                        <tr><td><code>createdAt</code></td><td>Timestamp of transaction record creation</td></tr>
+                    </tbody>
+                </table>
+                
+                <h3>Deposit Collection (Additional Detail)</h3>
+                <p>Stores records for individual deposit attempts.</p>
+                
+                <h3>Withdrawal Collection (Additional Detail)</h3>
+                <p>Stores records for withdrawal requests.</p>
+                
+                <h3>ProfitDistribution Collection (Additional Detail)</h3>
+                <p>Logs manual profit distributions made by the Admin.</p>
+                
+                <h3>Content Collection (Additional Detail)</h3>
+                <p>Stores metadata for educational content.</p>
+                
+                <h3>Notification Collection (Additional Detail)</h3>
+                <p>Stores in-app and email notification history.</p>
+
+            </section>
+
+            <section id="api">
+                <h2>API Endpoints</h2>
+                <p>The system is built with Next.js API Routes, providing structured endpoints for all major functionalities.</p>
+
+                <h3>Authentication</h3>
+                <div class="api-endpoint"><strong>POST</strong> <code>/api/auth/register</code> – Create account</div>
+                <div class="api-endpoint"><strong>POST</strong> <code>/api/auth/login</code> – Login</div>
+
+                <h3>User Financial</h3>
+                <div class="api-endpoint"><strong>POST</strong> <code>/api/finance/deposit/create</code> – Create Razorpay order for deposit</div>
+                <div class="api-endpoint"><strong>POST</strong> <code>/api/finance/deposit/verify</code> – Validate Razorpay payment via webhook</div>
+                <div class="api-endpoint"><strong>POST</strong> <code>/api/finance/withdraw</code> – Request a withdrawal</div>
+                <div class="api-endpoint"><strong>GET</strong> <code>/api/finance/transactions</code> – Fetch user's transaction history</div>
+
+                <h3>Admin Actions</h3>
+                <div class="api-endpoint"><strong>GET</strong> <code>/api/admin/withdrawals</code> – Fetch list of pending withdrawals</div>
+                <div class="api-endpoint"><strong>POST</strong> <code>/api/admin/withdraw/manage</code> – Approve or reject a withdrawal request</div>
+                <div class="api-endpoint"><strong>POST</strong> <code>/api/admin/profit</code> – Manually distribute profit to users</div>
+                <div class="api-endpoint"><strong>POST</strong> <code>/api/admin/content</code> – Upload new learning content</div>
+                <div class="api-endpoint"><strong>POST</strong> <code>/api/admin/users/manage</code> – Block or modify user accounts</div>
+
+                <h3>Internal Core (Backend-to-Backend/Service Communication)</h3>
+                <div class="api-endpoint"><strong>POST</strong> <code>/api/internal/socket</code> – Broadcast real-time updates</div>
+                <div class="api-endpoint"><strong>POST</strong> <code>/api/internal/email</code> – Send transactional E-mails</div>
+
+            </section>
+
+            <section id="glossary">
+                <h2>Glossary</h2>
+                <ul>
+                    <li><strong>Admin:</strong> Manager role with approval and management powers.</li>
+                    <li><strong>Balance:</strong> The user's total investment value (Principal + compound growth).</li>
+                    <li><strong>Payout Wallet:</strong> The reserve of funds (profit) that is immediately withdrawable by the user.</li>
+                    <li><strong>Compound:</strong> The action of adding profit back into the principal to increase future earnings.</li>
+                    <li><strong>Pending Withdrawal:</strong> A withdrawal request initiated by the user that is currently locked and waiting for Admin approval.</li>
+                    <li><strong>Rejected Withdrawal:</strong> A request rejected by the Admin, resulting in the locked amount being refunded to the user's balance.</li>
+                    <li><strong>Razorpay:</strong> The third-party payment gateway integrated for handling deposits.</li>
+                    <li><strong>NextAuth:</strong> The authentication middleware used for secure session management.</li>
+                    <li><strong>Mongoose:</strong> The MongoDB Object Data Modeling (ODM) library used in the backend.</li>
+                    <li><strong>Socket.io:</strong> A library used for enabling live, real-time updates to the client (e.g., balance changes).</li>
+                    <li><strong>Nodemailer:</strong> The service used to send SMTP email notifications.</li>
+                    <li><strong>Profit Distribution:</strong> The manual Admin process of issuing earnings to users' accounts.</li>
+                </ul>
+            </section>
+  <button class="mobile-toggle" type="button">☰ Menu</button>
+  <div class="sidebar-backdrop"></div>
+  <div class="sidebar" id="investhub-sidebar" role="navigation" aria-label="Primary">
+    <h1>INVESTHUB</h1>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#flowchart">Flowchart</a></li>
+      <li><a href="#dfd">DFD</a></li>
+      <li><a href="#activity">Activity</a></li>
+      <li><a href="#sequence">Sequence</a></li>
+      <li><a href="#uml">UML</a></li>
+      <li><a href="#er">ER</a></li>
+      <li><a href="#usecase">Use Case</a></li>
+      <li><a href="#deployment">Deployment</a></li>
+      <li><a href="#components">Components</a></li>
+      <li><a href="#withdrawals">Withdrawals</a></li>
+      <li><a href="#datadictionary">Data Dictionary</a></li>
+      <li><a href="#api">API Endpoints</a></li>
+      <li><a href="#glossary">Glossary</a></li>
+    </ul>
+  </div>
+
+  <div class="content" id="content">
+    <section class="section" id="home">
+      <section class="hero">
+        <h2>InvestHub – System Documentation</h2>
+        <p>A fully simulated investment and finance learning platform with deposits, withdrawals, admin actions, real-time updates, and automated profit allocation.</p>
+      </section>
+
+      <section class="highlights">
+        <div class="card">
+          <h3>User Features</h3>
+          <ul>
+            <li>Deposit funds (Razorpay)</li>
+            <li>Track balance &amp; transactions</li>
+            <li>Request withdrawals</li>
+            <li>Choose compound/payout mode</li>
+            <li>Access learning content</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Admin Features</h3>
+          <ul>
+            <li>Approve/Reject withdrawals</li>
+            <li>Distribute profits</li>
+            <li>View platform performance</li>
+            <li>Upload content</li>
+            <li>Block or manage users</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>System Core</h3>
+          <ul>
+            <li>Secure authentication</li>
+            <li>Atomic database transactions</li>
+            <li>Real-time socket updates</li>
+            <li>Email notifications</li>
+            <li>Full audit transaction logs</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="quicklinks">
+        <h3>Jump To:</h3>
+        <div class="quick-buttons">
+          <a href="#flowchart">Flowchart</a>
+          <a href="#dfd">DFD</a>
+          <a href="#uml">UML</a>
+          <a href="#deployment">Deployment</a>
+          <a href="#api">API Docs</a>
+</div>
+    </div>
+      </section>
+    </section>
+
+    <section class="section" id="flowchart">
+      <h2>Flowchart</h2>
+      <div class="diagram mermaid">
+flowchart TD
+    A[User Registers/Login] --> B[Dashboard]
+    B --> C{Select Action}
+
+    C -- Deposit --> D[Create Razorpay Order]
+    D --> E{Payment Verified?}
+    E -- No --> F[Fail & Notify User]
+    E -- Yes --> G[Update Deposit + Wallet + Txn]
+    G --> H[Send Real-Time Socket Update]
+    H --> B
+
+    C -- Withdraw --> I[Check Wallet Funds]
+    I -- Insufficient --> J[Notify Error]
+    I -- Sufficient --> K[Deduct + Lock Amount]
+    K --> L[Create Withdrawal:PENDING]
+    L --> M[Notify Admin Panel]
+    M --> B
+
+    C -- View Learning --> N[Show Content Feed]
+    N --> B
+
+    Admin --> O[Review Requests]
+    O -- Approve --> P[Finalize Withdrawal + Notify]
+    O -- Reject --> Q[Refund User + Notify]
+      </div>
+    </section>
+
+    <section class="section" id="dfd">
+      <h2>Data Flow Diagrams</h2>
+
+      <h3>DFD Level 0</h3>
+      <div class="diagram mermaid">
+flowchart LR
+  User <--> System
+  Admin <--> System
+      </div>
+
+      <h3>DFD Level 1</h3>
+      <div class="diagram mermaid">
+flowchart LR
+    User -->|Register/Login| Auth
+    User -->|Deposit/Withdraw/Content| Finance
+    Admin -->|Approval/Profit| AdminPanel
+
+    Auth --> UsersDB[(Users)]
+    Finance --> WalletDB[(Wallets)]
+    Finance --> TxDB[(Transactions)]
+    Finance --> DepDB[(Deposits)]
+    Finance --> WdDB[(Withdrawals)]
+    AdminPanel --> ProfitDB[(ProfitDistributions)]
+    AdminPanel --> ContentDB[(Content Feed)]
+    AdminPanel --> NotifyDB[(Notifications)]
+
+    Finance --> User
+    AdminPanel --> Admin
+      </div>
+    </section>
+
+    <section class="section" id="activity">
+      <h2>Activity Diagram</h2>
+      <div class="diagram mermaid">
+flowchart TD
+    Start --> Login[Login/Register]
+    Login --> Dashboard[Dashboard]
+
+    Dashboard -->|Deposit| Razorpay[Create Razorpay Order]
+    Razorpay --> Paid{Payment Verified?}
+    Paid -- Yes --> Wallet[Update Wallet & Txn]
+    Wallet --> Notify
+    Paid -- No --> Retry[Notify Error]
+
+    Dashboard -->|Withdraw| CheckFunds
+    CheckFunds -- Insufficient --> Error[Notify User]
+    CheckFunds -- Sufficient --> LockFunds[Lock Amount]
+    LockFunds --> CreatePending[Withdrawal Pending]
+    CreatePending --> AdminReview[Admin Reviews]
+
+    AdminReview -- Approve --> Settle[Admin Finalize + Notify]
+    AdminReview -- Reject --> Refund[Refund & Notify]
+
+    Dashboard -->|View Content| Feed[Show Educational Feed]
+
+    Notify --> Dashboard
+    Retry --> Dashboard
+    Settle --> Dashboard
+    Refund --> Dashboard
+
+    Dashboard --> End
+      </div>
+    </section>
+
+    <section class="section" id="sequence">
+      <h2>Deposit Sequence</h2>
+      <div class="diagram mermaid">
+sequenceDiagram
+    User->>Frontend: Input Amount & Click Deposit
+    Frontend->>Backend: Create Razorpay Order
+    Backend->>Razorpay: Generate Order
+    Razorpay->>Frontend: Checkout UI
+    User->>Razorpay: Pay
+    Razorpay->>Backend: Webhook Callback
+    Backend->>DB: Update Deposit + Wallet + Txn
+    Backend->>Socket: Emit Live Update
+    Backend->>Email: Send Confirmation
+    Backend->>User: Success Response
+      </div>
+
+      <h2>Withdrawal Sequence</h2>
+      <div class="diagram mermaid">
+sequenceDiagram
+    User->>Frontend: Request Withdrawal
+    Frontend->>Backend: Send Amount
+    Backend->>DB: Fetch Wallet
+    Backend->>Backend: Validate & Lock Balance
+    Backend->>DB: Create Withdrawal Pending
+    Backend->>Socket: Notify Admin
+    Admin->>Backend: Approve/Reject
+    Backend->>DB: Update Withdrawal
+    alt Reject
+      Backend->>DB: Refund Wallet
+    end
+    Backend->>Email: Send Notification
+    Backend->>Socket: Notify User Update
+      </div>
+    </section>
+
+    <section class="section" id="uml">
+      <h2>UML Class Diagram</h2>
+      <div class="diagram mermaid">
+classDiagram
+    class User {
+      _id
+      name
+      email
+      password
+      role
+      status
+      payoutPreference
+      referralCode
+      createdAt
+    }
+
+    class Wallet {
+      userId
+      balance
+      payoutWalletBalance
+      totalDeposited
+      totalWithdrawn
+      totalProfit
+    }
+
+    class Transaction {
+      userId
+      type
+      amount
+      status
+      referenceId
+      description
+      createdAt
+    }
+
+    class Deposit {
+      userId
+      amount
+      razorpayOrderId
+      razorpayPaymentId
+      razorpaySignature
+      status
+    }
+
+    class Withdrawal {
+      userId
+      amount
+      status
+      adminRemark
+      processedAt
+    }
+
+    class ProfitDistribution {
+      totalProfit
+      adminShare
+      userShare
+      distributedToUserCount
+      distributionDate
+    }
+
+    class Content {
+      type
+      title
+      url
+      uploadedBy
+      isPublic
+    }
+
+    class Notification {
+      userId
+      title
+      message
+      isRead
+    }
+
+    User --> Wallet
+    User --> Transaction
+    User --> Deposit
+    User --> Withdrawal
+    User --> Notification
+    Admin --> ProfitDistribution
+      </div>
+    </section>
+
+    <section class="section" id="er">
+      <h2>Entity Relationship Diagram</h2>
+      <div class="diagram mermaid">
+erDiagram
+    USER ||--o{ WALLET : owns
+    USER ||--o{ TRANSACTION : makes
+    USER ||--o{ DEPOSIT : initiates
+    USER ||--o{ WITHDRAWAL : requests
+    USER ||--o{ NOTIFICATION : receives
+    USER ||--o{ CONTENT : views
+    PROFITDISTRIBUTION ||--o{ TRANSACTION : logs
+
+    USER {
+      string _id
+      string name
+      string email
+    }
+
+    WALLET {
+      number balance
+      number payoutWalletBalance
+    }
+
+    TRANSACTION {
+      string type
+      number amount
+    }
+      </div>
+    </section>
+
+    <section class="section" id="usecase">
+      <h2>Use Case Diagram</h2>
+      <div class="diagram mermaid">
+flowchart LR
+    User([User]) --- UC1[Register / Login]
+    User --- UC2[Deposit Funds]
+    User --- UC3[Request Withdrawal]
+    User --- UC4[View Dashboard]
+    User --- UC5[Set Compound/Payout]
+    User --- UC6[View Learning Content]
+
+    Admin([Admin]) --- UC7[Approve/Reject Withdrawals]
+    Admin --- UC8[Distribute Profit]
+    Admin --- UC9[Upload Learning Content]
+    Admin --- UC10[Manage Users]
+
+    System([InvestHub System]) --- UC11[Verify Payments]
+    System --- UC12[Send Emails & Notifications]
+    System --- UC13[Push Real-Time Updates]
+      </div>
+    </section>
+
+    <section class="section" id="deployment">
+      <h2>Deployment Architecture</h2>
+      <div class="diagram mermaid">
+flowchart TD
+    Browser[Client Browser<br>Next.js UI] --> API[Next.js API Routes]
+    AdminBrowser[Admin Panel] --> API
+
+    API --> MongoDB[(MongoDB Atlas)]
+    API --> Razorpay[(Razorpay Gateway)]
+    API --> SMTP[(Nodemailer SMTP)]
+    API --> Socket[(Socket Push Service)]
+      </div>
+    </section>
+
+    <section class="section" id="components">
+      <h2>Component Diagram</h2>
+      <div class="diagram mermaid">
+flowchart LR
+    UI[Next.js UI]
+    AUTH[NextAuth Auth]
+    FINANCE[Finance Engine]
+    ADMIN[Admin System]
+    SOCKET[Socket Notifier]
+    EMAIL[Nodemailer Service]
+    DB[(MongoDB)]
+
+    UI --> AUTH
+    UI --> FINANCE
+    UI --> ADMIN
+
+    AUTH --> DB
+    FINANCE --> DB
+    ADMIN --> DB
+    FINANCE --> SOCKET
+    ADMIN --> SOCKET
+    FINANCE --> EMAIL
+    ADMIN --> EMAIL
+      </div>
+    </section>
+
+    <section class="section" id="withdrawals">
+      <h2>Withdrawal State Machine</h2>
+      <div class="diagram mermaid">
+stateDiagram-v2
+    [*] --> Initiated
+    Initiated --> Pending: Lock Balance
+    Pending --> Approved: Admin Approves
+    Pending --> Rejected: Admin Rejects
+    Approved --> Settled: Payout Completes
+    Rejected --> Refunded: Money Returned
+    Settled --> [*]
+    Refunded --> [*]
+      </div>
+    </section>
+
+    <section class="section" id="datadictionary">
+      <h2>Data Dictionary</h2>
+
+      <p>The following tables explain every key field in the database:</p>
+
+      <h3>Users</h3>
+      <ul>
+        <li><b>name</b>: Full display name</li>
+        <li><b>email</b>: Unique login identifier</li>
+        <li><b>password</b>: Stored encrypted hash</li>
+        <li><b>role</b>: USER / ADMIN</li>
+        <li><b>status</b>: ACTIVE / BLOCKED</li>
+        <li><b>payoutPreference</b>: COMPOUND or PAYOUT</li>
+        <li><b>referralCode</b>: Generated unique code</li>
+      </ul>
+
+      <h3>Wallet</h3>
+      <ul>
+        <li><b>balance</b>: Principal + compounded growth</li>
+        <li><b>payoutWalletBalance</b>: Withdrawable profit</li>
+        <li><b>totalDeposited</b>: Lifetime sum of deposits</li>
+        <li><b>totalWithdrawn</b>: Lifetime sum of withdrawals</li>
+        <li><b>totalProfit</b>: Lifetime earned profits</li>
+      </ul>
+
+      <h3>Transactions</h3>
+      <ul>
+        <li><b>type</b>: DEPOSIT, WITHDRAWAL, PROFIT</li>
+        <li><b>status</b>: PENDING, SUCCESS, FAILED</li>
+        <li><b>referenceId</b>: Points to related record</li>
+        <li><b>description</b>: Optional narrative</li>
+      </ul>
+    </section>
+
+    <section class="section" id="api">
+      <h2>API Endpoints</h2>
+
+      <h3>Authentication</h3>
+      <ul>
+        <li><b>POST /api/auth/register</b> – Create account</li>
+        <li><b>POST /api/auth/login</b> – Login</li>
+      </ul>
+
+      <h3>User Financial</h3>
+      <ul>
+        <li><b>POST /api/finance/deposit/create</b> – Create Razorpay order</li>
+        <li><b>POST /api/finance/deposit/verify</b> – Validate payment</li>
+        <li><b>POST /api/finance/withdraw</b> – Request withdrawal</li>
+        <li><b>GET /api/finance/transactions</b> – Fetch user txns</li>
+      </ul>
+
+      <h3>Admin Actions</h3>
+      <ul>
+        <li><b>GET /api/admin/withdrawals</b> – Pending list</li>
+        <li><b>POST /api/admin/withdraw/manage</b> – Approve/Reject</li>
+        <li><b>POST /api/admin/profit</b> – Distribute profit</li>
+        <li><b>POST /api/admin/content</b> – Upload learning</li>
+      </ul>
+
+      <h3>Internal Core</h3>
+      <ul>
+        <li><b>POST /api/internal/socket</b> – Broadcast updates</li>
+        <li><b>POST /api/internal/email</b> – Send E-mail</li>
+      </ul>
+    </section>
+
+    <section class="section" id="glossary">
+      <h2>Glossary</h2>
+
+      <ul>
+        <li><b>Admin:</b> Manager with approval powers</li>
+        <li><b>Balance:</b> Principal + compound growth</li>
+        <li><b>Payout Wallet:</b> Withdrawable profit reserve</li>
+        <li><b>Compound:</b> Add profit back to capital</li>
+        <li><b>Pending Withdrawal:</b> Waiting admin approval</li>
+        <li><b>Rejected Withdrawal:</b> Locked amount refunded</li>
+        <li><b>Razorpay:</b> Payment gateway interface</li>
+        <li><b>NextAuth:</b> Authentication middleware</li>
+        <li><b>Mongoose:</b> MongoDB ORM layer</li>
+        <li><b>Socket.io:</b> Live real-time bulletins</li>
+        <li><b>Nodemailer:</b> SMTP email service</li>
+        <li><b>Profit Distribution:</b> Manual admin issue of earnings</li>
+      </ul>
+    </section>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sidebar = document.querySelector(".sidebar");
+      const toggleBtn = document.querySelector(".mobile-toggle");
+      const backdrop = document.querySelector(".sidebar-backdrop");
+      const content = document.getElementById("content");
+
+      const setOpen = (open) => {
+        sidebar.classList.toggle("open", open);
+        backdrop.classList.toggle("open", open);
+        toggleBtn.classList.toggle("hidden", open);
+        toggleBtn.setAttribute("aria-expanded", String(open));
+      };
+
+      toggleBtn.setAttribute("aria-controls", "investhub-sidebar");
+      toggleBtn.setAttribute("aria-expanded", "false");
+
+      toggleBtn.addEventListener("click", () => {
+        setOpen(!sidebar.classList.contains("open"));
+      });
+
+      backdrop.addEventListener("click", () => setOpen(false));
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") setOpen(false);
+      });
+
+      const links = Array.from(sidebar.querySelectorAll('a[href^="#"]'));
+      const setActive = () => {
+        const hash = (window.location.hash || "#home").toLowerCase();
+        links.forEach((a) => {
+          a.classList.toggle("active", (a.getAttribute("href") || "").toLowerCase() === hash);
+        });
+      };
+
+      if (!window.location.hash) {
+        history.replaceState(null, "", "#home");
+      }
+      setActive();
+
+      window.addEventListener("hashchange", () => {
+        setActive();
+      });
+
+      sidebar.addEventListener("click", (e) => {
+        const a = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
+        if (!a) return;
+        if (window.innerWidth <= 1024) setOpen(false);
+      });
+
+      content.addEventListener("click", () => {
+        if (window.innerWidth <= 1024) setOpen(false);
+      });
+
+      const sectionIds = links
+        .map((a) => (a.getAttribute("href") || "").slice(1))
+        .filter(Boolean);
+
+      const sections = sectionIds
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            const visible = entries
+              .filter((e2) => e2.isIntersecting)
+              .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+            if (!visible || !visible.target || !visible.target.id) return;
+            history.replaceState(null, "", `#${visible.target.id}`);
+            setActive();
+          },
+          { root: content, threshold: [0.2, 0.35, 0.5] }
+        );
+
+        sections.forEach((s) => observer.observe(s));
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Advanced Calculator</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #0f172a, #020617);
+}
+
+.calculator {
+  width: 360px;
+  max-width: 95%;
+}
+
+.main {
+  background: #020617;
+  padding: 18px;
+  border-radius: 22px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+.display {
+  background: #020617;
+  color: #e5e7eb;
+  border-radius: 14px;
+  padding: 12px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+.display .history {
+  font-size: 14px;
+  color: #6b7280;
+  text-align: right;
+}
+
+.display .result {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.buttons {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  border: none;
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.15s;
+  background: #020617;
+  color: #e5e7eb;
+  box-shadow: inset 0 0 0 1px #1f2937;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: #020617;
+}
+
+.op {
+  background: #1f2937;
+  color: #38bdf8;
+}
+
+.eq {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+}
+
+.func {
+  background: #020617;
+  color: #facc15;
+}
+
+.zero {
+  grid-column: span 2;
+}
+
+</style>
+</head>
+<body>
+
+<div class="calculator">
+  <div class="main">
+
+    <div class="display">
+      <div class="history" id="history"></div>
+      <div class="result" id="display">0</div>
+    </div>
+
+    <div class="buttons">
+      <button class="func" onclick="clearAll()">C</button>
+      <button class="func" onclick="backspace()">⌫</button>
+      <button class="func" onclick="addParen()">()</button>
+      <button class="op" onclick="addOperator('/')">÷</button>
+
+      <button onclick="addNumber('7')">7</button>
+      <button onclick="addNumber('8')">8</button>
+      <button onclick="addNumber('9')">9</button>
+      <button class="op" onclick="addOperator('*')">×</button>
+
+      <button onclick="addNumber('4')">4</button>
+      <button onclick="addNumber('5')">5</button>
+      <button onclick="addNumber('6')">6</button>
+      <button class="op" onclick="addOperator('-')">−</button>
+
+      <button onclick="addNumber('1')">1</button>
+      <button onclick="addNumber('2')">2</button>
+      <button onclick="addNumber('3')">3</button>
+      <button class="op" onclick="addOperator('+')">+</button>
+
+      <button class="func" onclick="toggleSign()">+/-</button>
+      <button class="zero" onclick="addNumber('0')">0</button>
+      <button onclick="addDecimal()">.</button>
+      <button class="eq" onclick="calculate()">=</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let expression = "";
+let history = "";
+
+const display = document.getElementById("display");
+const historyEl = document.getElementById("history");
+
+function updateDisplay() {
+  display.innerText = expression || "0";
+  historyEl.innerText = history;
+}
+
+function addNumber(num) {
+  expression += num;
+  updateDisplay();
+}
+
+function addDecimal() {
+  let parts = expression.split(/[\+\-\*\/]/);
+  let last = parts[parts.length - 1];
+  if (!last.includes(".")) {
+    expression += ".";
+  }
+  updateDisplay();
+}
+
+function addOperator(op) {
+  if (expression === "") return;
+  if (/[\+\-\*\/]$/.test(expression)) {
+    expression = expression.slice(0, -1);
+  }
+  expression += op;
+  updateDisplay();
+}
+
+function clearAll() {
+  expression = "";
+  history = "";
+  updateDisplay();
+}
+
+function backspace() {
+  expression = expression.slice(0, -1);
+  updateDisplay();
+}
+
+function addParen() {
+  let open = (expression.match(/\(/g) || []).length;
+  let close = (expression.match(/\)/g) || []).length;
+  if (open === close || /[\+\-\*\/\(]$/.test(expression)) {
+    expression += "(";
+  } else {
+    expression += ")";
+  }
+  updateDisplay();
+}
+
+function toggleSign() {
+  let match = expression.match(/(-?\d+\.?\d*)$/);
+  if (!match) return;
+  let num = match[0];
+  let toggled = num.startsWith("-") ? num.slice(1) : "-" + num;
+  expression = expression.slice(0, -num.length) + toggled;
+  updateDisplay();
+}
+
+/* ===== REAL MATH ENGINE (NO eval) ===== */
+
+function tokenize(expr) {
+  return expr.match(/(\d+\.?\d*|\+|\-|\*|\/|\(|\))/g);
+}
+
+function parseExpression(tokens) {
+  let pos = 0;
+
+  function parseFactor() {
+    let token = tokens[pos];
+    if (token === "(") {
+      pos++;
+      let value = parseTerm();
+      pos++;
+      return value;
+    }
+    pos++;
+    return parseFloat(token);
+  }
+
+  function parseMulDiv() {
+    let value = parseFactor();
+    while (tokens[pos] === "*" || tokens[pos] === "/") {
+      let op = tokens[pos++];
+      let next = parseFactor();
+      value = op === "*" ? value * next : value / next;
+    }
+    return value;
+  }
+
+  function parseTerm() {
+    let value = parseMulDiv();
+    while (tokens[pos] === "+" || tokens[pos] === "-") {
+      let op = tokens[pos++];
+      let next = parseMulDiv();
+      value = op === "+" ? value + next : value - next;
+    }
+    return value;
+  }
+
+  return parseTerm();
+}
+
+function calculate() {
+  try {
+    history = expression;
+    let tokens = tokenize(expression);
+    let result = parseExpression(tokens);
+    expression = result.toString();
+    updateDisplay();
+  } catch (e) {
+    expression = "";
+    display.innerText = "Error";
+  }
+}
+
+updateDisplay();
+</script>
+
+</body>
+</html>

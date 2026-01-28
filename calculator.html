@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .calculator {
+        width: 70%;
+      }
+      .main {
+        background: black;
+        padding: 20px;
+        border-radius: 20px;
+      }
+      .input {
+        background: #eee;
+        height: 60px;
+        border-radius: 15px;
+        font-size: 24px;
+        padding: 10px;
+        margin-bottom: 15px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .number div {
+        display: flex;
+      }
+      button {
+        flex: 1;
+        margin: 5px;
+        padding: 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 15px;
+      }
+      .op {
+        background: #b8c0bd;
+      }
+      .eq {
+        background: #00ffa6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="main">
+        <div class="input" id="display"></div>
+
+        <div class="number">
+          <div>
+            <button onclick="add('C')">C</button>
+            <button onclick="addBracket()">( )</button>
+            <button onclick="addPercent()">%</button>
+            <button onclick="add('/')" class="op">/</button>
+          </div>
+
+          <div>
+            <button onclick="add('7')">7</button>
+            <button onclick="add('8')">8</button>
+            <button onclick="add('9')">9</button>
+            <button onclick="add('*')" class="op">X</button>
+          </div>
+
+          <div>
+            <button onclick="add('4')">4</button>
+            <button onclick="add('5')">5</button>
+            <button onclick="add('6')">6</button>
+            <button onclick="add('-')" class="op">-</button>
+          </div>
+
+          <div>
+            <button onclick="add('1')">1</button>
+            <button onclick="add('2')">2</button>
+            <button onclick="add('3')">3</button>
+            <!-- <button onclick="calculate()" class="eq">=</button> -->
+            <button onclick="add('+')" class="op">+</button>
+          </div>
+
+          <div>
+            <button onclick="toggleSign()">+/-</button>
+            <button onclick="add('0')">0</button>
+            <button onclick="add('.')">.</button>
+            <button onclick="calculate()" class="eq">=</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const display = document.getElementById("display");
+      let expression = "";
+
+      function addBracket() {
+        let open = (expression.match(/\(/g) || []).length;
+        let close = (expression.match(/\)/g) || []).length;
+
+        if (open > close && /[\d\)]$/.test(expression)) {
+          expression += ")";
+        } else {
+          expression += "(";
+        }
+
+        display.innerText = expression;
+      }
+
+      //
+      function toggleSign() {
+        if (!expression) return;
+
+        let tokens = tokenize(expression);
+        if (!tokens || tokens.length === 0) return;
+
+        let lastIndex = tokens.length - 1;
+        let lastToken = tokens[lastIndex];
+
+        if (!isNaN(lastToken)) {
+          if (lastToken.startsWith("-")) {
+            tokens[lastIndex] = lastToken.substring(1);
+          } else {
+            tokens[lastIndex] = "-" + lastToken;
+          }
+        }
+
+        expression = tokens.join("");
+        display.innerText = expression;
+      }
+
+      function addPercent() {
+        let tokens = tokenize(expression);
+        if (!tokens || tokens.length === 0) return;
+
+        let last = tokens[tokens.length - 1];
+        if (isNaN(last)) return;
+
+        let num = parseFloat(last);
+        let operator = tokens[tokens.length - 2];
+        let base = tokens[tokens.length - 3];
+
+        let percentValue;
+
+        if (operator === "+" || operator === "-") {
+          percentValue = (parseFloat(base) * num) / 100;
+        } else {
+          percentValue = num / 100;
+        }
+
+        tokens[tokens.length - 1] = percentValue;
+        expression = tokens.join("");
+        display.innerText = expression;
+      }
+
+      function add(value) {
+        if (value === "C") {
+          expression = "";
+          display.innerText = "";
+          return;
+        }
+        // console.log( "this is ",value === "0");
+        if (expression === "" && value === "0") {
+          return;
+        }
+
+        if (value === ".") {
+          let parts = expression.split(/[\+\-\*\/\(\)]/);
+          let currentNumber = parts[parts.length - 1];
+
+          if (currentNumber.includes(".")) return;
+
+          if (currentNumber === "") {
+            expression += "0.";
+          } else {
+            expression += ".";
+          }
+
+          display.innerText = expression;
+          return;
+        }
+
+        let last = expression.slice(-1);
+
+        if ("+-*/".includes(value) && "+-*/".includes(last)) {
+          expression = expression.slice(0, -1) + value;
+        } else {
+          expression += value;
+        }
+
+        display.innerText = expression;
+      }
+      function tokenize(expr) {
+        return expr.match(/-?\d+\.?\d*|\+|\-|\*|\/|\(|\)/g);
+      }
+
+      function solveBrackets(tokens) {
+        while (tokens.includes("(")) {
+          let start = tokens.lastIndexOf("(");
+          let end = tokens.indexOf(")", start);
+
+          if (end === -1) throw "Bracket Error";
+
+          let innerTokens = tokens.slice(start + 1, end);
+
+          let high = highPrecedence(innerTokens);
+          let result = lowPrecedence(high);
+
+          tokens.splice(start, end - start + 1, result);
+        }
+        return tokens;
+      }
+
+      function highPrecedence(tokens) {
+        let array = [];
+        let i = 0;
+
+        while (i < tokens.length) {
+          let token = tokens[i];
+
+          if (token === "*" || token === "/") {
+            let prev = array.pop();
+            let next = parseFloat(tokens[i + 1]);
+            let res = token === "*" ? prev * next : prev / next;
+            array.push(res);
+            i += 2;
+          } else {
+            array.push(isNaN(token) ? token : parseFloat(token));
+            i++;
+          }
+        }
+        return array;
+      }
+
+      function lowPrecedence(tokens) {
+        let result = tokens[0];
+
+        for (let i = 1; i < tokens.length; i += 2) {
+          let operator = tokens[i];
+          let next = tokens[i + 1];
+
+          if (operator === "+") result += next;
+          if (operator === "-") result -= next;
+        }
+        return result;
+      }
+
+      function calculate() {
+        try {
+          let tokens = tokenize(expression);
+          tokens = solveBrackets(tokens);
+          let high = highPrecedence(tokens);
+          let result = lowPrecedence(high);
+          display.innerText = result;
+          expression = result.toString();
+        } catch {
+          display.innerText = "Error";
+          expression = "";
+        }
+      }
+
+      document.addEventListener("keydown", function (e) {
+        const key = e.key;
+
+        if (!isNaN(key)) {
+          add(key);
+          return;
+        }
+
+        if (key === "+" || key === "-" || key === "*" || key === "/") {
+          add(key);
+          return;
+        }
+
+        if (key === ".") {
+          add(".");
+          return;
+        }
+
+        if (key === "Enter" || key === "=") {
+          calculate();
+          return;
+        }
+
+        if (key === "Backspace") {
+          expression = expression.slice(0, -1);
+          display.innerText = expression;
+          return;
+        }
+
+        if (key === "(" || key === ")") {
+          addBracket();
+          return;
+        }
+
+        if (key === "%") {
+          addPercent();
+          return;
+        }
+      });
+    </script>
+  </body>
+</html>
